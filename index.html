@@ -77,6 +77,31 @@
       font-weight: bold;
     }
 
+  .slideshow-box {
+  margin: 30px auto 10px;
+  height: 300px;
+  border: 2px solid #a8441c;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide-img.active {
+  opacity: 1;
+  position: relative;
+}
+    
     .map-box {
       margin: 30px auto 10px;
       height: 300px;
@@ -130,6 +155,20 @@
   <div class="caption">అందరికీ హృదయపూర్వక ఆహ్వానం</div>
   <div class="decorative-divider"><span>❀</span></div>
 
+  <!-- Image Slideshow Box -->
+
+  <div class="slideshow-box">
+  <img class="slide-img" src="./image1.jpg" alt="Slide 1">
+  <img class="slide-img" src="./image2.jpg" alt="Slide 2">
+  <img class="slide-img" src="./image3.jpg" alt="Slide 3">
+  <img class="slide-img" src="./image4.jpg" alt="Slide 4">
+  <img class="slide-img" src="./image5.jpg" alt="Slide 5">
+  <img class="slide-img" src="./image6.jpg" alt="Slide 6">
+  <img class="slide-img" src="./image7.jpg" alt="Slide 7">
+  <img class="slide-img" src="./image8.jpg" alt="Slide 8">
+  <img class="slide-img" src="./image9.jpg" alt="Slide 9">
+</div>
+  
   <!-- Map Embed -->
   <div class="map-box">
     <iframe
@@ -160,7 +199,7 @@
     <p><strong>Event Address:</strong></p>
     <p>సుదర్శన్ నిలయం</p>
     <p>Plot No. 5, Trimurthy Colony, Saroornagar, Hyderabad</p>
-    <p><strong>Date:</strong> 30th July 2025, 10:00 AM – 12:00 PM</p>
+    <p><strong>Date:</strong> 30th July 2025 </p>
   </footer>
 
   <!-- Toggle Music Script -->
@@ -181,8 +220,20 @@
         musicBtn.textContent = "🔇";
       }
     });
+
+  const slides = document.querySelectorAll('.slide-img');
+  let currentSlide = 0;
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  // Initialize first slide
+  slides[0].classList.add('active');
+  setInterval(showNextSlide, 5000); // Change every 5 seconds
   </script>
 </body>
 </html>
-
 
