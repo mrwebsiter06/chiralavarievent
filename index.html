@@ -131,16 +131,22 @@
       background-color: #ffbb00;
     }
 
-    footer {
-      margin: 25px 0 15px;
-      font-family: "NTR", sans-serif;
-      color: #5e2b0b;
-      font-size: 15px;
-    }
+footer {
+  margin: 25px 0 15px;
+  font-family: "NTR", sans-serif;
+  color: #5e2b0b;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2; /* Tighter line spacing */
+}
 
-    footer p {
-      margin: 4px 0;
-    }
+footer p {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Optional, for zero gap */
+}
+    
   </style>
 </head>
 <body>
