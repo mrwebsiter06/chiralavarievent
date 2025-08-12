@@ -90,6 +90,51 @@
       color: #a8441c;
       text-align: center;
     }
+    @media (max-width: 768px) {
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .viewer {
+    height: 50vh; /* Reduce height for smaller screens */
+  }
+
+  .nav-btn {
+    padding: 6px 8px;
+    font-size: 1.2rem;
+  }
+
+  .thumbs {
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .thumb {
+    width: 80px;
+    height: 55px;
+  }
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .viewer {
+    height: 40vh;
+  }
+
+  .thumb {
+    width: 60px;
+    height: 45px;
+  }
+
+  .nav-btn {
+    padding: 4px 6px;
+    font-size: 1rem;
+  }
+}
+
   </style>
 </head>
 <body>
