@@ -18,6 +18,23 @@
       padding: 20px;
       box-sizing: border-box;
     }
+     .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
     h1 {
       font-family: 'NTR', sans-serif;
       font-size: 1.8rem;
@@ -144,6 +161,15 @@
   alt="decorative horizontal line" 
   style="width: 100%; height: auto; display: block; margin: 20px 0;">
 </h1>
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/_lHIunTex_M?si=JsAbuy3pPoo54XsS" 
+            title="YouTube video player" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+    </iframe>
+  </div>
+</br>
   <div class="gallery-wrap">
     <div class="viewer">
       <button class="nav-btn left" id="prevBtn">❮</button>
