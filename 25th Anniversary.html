@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="te">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>25వ వివాహ వార్షికోత్సవం – 09 ఫిబ్రవరి 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=NTR&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #ffe6ea;
+            color: #5c1e33;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        h1 {
+            font-family: 'NTR', sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ab2154;
+        }
+
+        .gallery-wrap {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .viewer {
+            position: relative;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .nav-btn.left {
+            left: 10px;
+        }
+
+        .nav-btn.right {
+            right: 10px;
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            padding: 5px;
+            background: #ffe6ea;
+        }
+
+        .thumb {
+            flex: 0 0 auto;
+            width: 100px;
+            height: 70px;
+            cursor: pointer;
+            opacity: 0.6;
+            border: 2px solid transparent;
+            background: #ffe6ea;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: #4af;
+        }
+
+        .thumb iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-family: 'NTR', sans-serif;
+            font-size: 1.2rem;
+            color: #ab2154;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+
+            .viewer {
+                height: 50vh;
+                /* Reduce height for smaller screens */
+            }
+
+            .nav-btn {
+                padding: 6px 8px;
+                font-size: 1.2rem;
+            }
+
+            .thumbs {
+                gap: 5px;
+                padding: 5px;
+            }
+
+            .thumb {
+                width: 80px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .viewer {
+                height: 40vh;
+            }
+
+            .thumb {
+                width: 60px;
+                height: 45px;
+            }
+
+            .nav-btn {
+                padding: 4px 6px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Navbar styles */
+        .navbar {
+            width: 100%;
+            background: #ab2154;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: #ffe6ea;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-title {
+            margin-left: 20px;
+            font-family: 'NTR', sans-serif;
+            font-size: 1.4rem;
+            color: #ffe6ea;
+            font-weight: bold;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #ab2154;
+            color: #ffe6ea;
+            transition: 0.3s;
+            z-index: 1001;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .side-menu a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #ffe6ea;
+            display: block;
+            font-family: 'NTR', sans-serif;
+            transition: 0.2s;
+        }
+
+        .side-menu a:hover {
+            background: #deaf9b;
+        }
+
+        .side-menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #ffe6ea;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .list-view-wrap {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+
+        .list-view-title {
+            color: #ab2154;
+            font-family: 'NTR', sans-serif;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .list-view-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            border: 1px solid #ffb3c1;
+        }
+
+        .list-item {
+            width: 100%;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: 0.2s;
+            background: #ffe6ea;
+        }
+
+        .list-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .list-item.active {
+            border-color: #ab2154;
+            transform: scale(1.05);
+        }
+
+        .list-sentinel {
+            height: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="hamburger" id="hamburgerMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-title">చీరాల వారి ఈవెంట్స్</div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="close-btn" id="closeMenu">&times;</div>
+        <a href="/index.html">🏠 Gruhapravesham </a>
+        <a href="/25th Anniversary.html">🪷 25th Anniversary</a>
+        <a href="https://drive.google.com/drive/folders/1faTso9SnCLdumrFb5DcIts81CaziV0L5?usp=drive_link"
+            target="_blank">📂
+            గృహప్రవేశం Google Drive Photos</a>
+              <a href="https://drive.google.com/drive/folders/1OxKiIUKj1D0gcYhlHUVI-kz64plGqigg?usp=drive_link"
+            target="_blank">📂
+            వివాహ వార్షికోత్సవం Google Drive Photos</a>
+    </div>
+    <h1>
+        25వ వివాహ వార్షికోత్సవం – 09
+        ఫిబ్రవరి 2025
+        <img src="/matched_color_design.png" alt="decorative horizontal line"
+            style="width: 100%; height: auto; display: block; margin: 20px 0;">
+    </h1>
+
+    <div class="gallery-wrap">
+        <div class="viewer">
+            <button class="nav-btn left" id="prevBtn">❮</button>
+            <iframe id="mainFrame" src=""></iframe>
+            <button class="nav-btn right" id="nextBtn">❯</button>
+        </div>
+        <div class="thumbs" id="thumbsList"></div>
+
+        <div class="list-view-wrap">
+            <div class="list-view-title">First 15 Photos View</div>
+            <div class="list-view-container" id="listViewContainer"></div>
+            <div class="list-sentinel" id="listSentinel"></div>
+        </div>
+
+    </div>
+
+    <div style="margin: 15px 0; text-align: center;">
+        <a href="https://drive.google.com/drive/folders/1OxKiIUKj1D0gcYhlHUVI-kz64plGqigg?usp=drive_link"
+            target="_blank" style="background-color: #ffe6ea; color: #ab2154; font-family: 'NTR', sans-serif;
+            font-size: 1.2rem; padding: 10px 20px; border: 2px solid #ab2154;
+            border-radius: 8px; text-decoration: none; display: inline-block;">
+            📂 View All Photos in Google Drive
+        </a>
+    </div>
+    <footer>
+        <br>
+        <span style="font-size: 0.9rem; color: #555;">
+            📌 Scroll to view the all photos, If a photo isn't loading, please double-click on its thumbnail below.
+        </span>
+    </footer>
+    <script>
+        const images = [
+            
+            "https://drive.google.com/file/d/1lfXZkbk0MqlYiDGYBBTZnqnfY_8OP1qU/preview",
+            "https://drive.google.com/file/d/1RRIhKyGIzybEOSOtG0EiwY23vOAjBg0B/preview",
+            "https://drive.google.com/file/d/1KUe6qPQostzWlP5T72qPYhqEvtsAvLhL/preview",
+            "https://drive.google.com/file/d/1-UsmWj4mKN_okWE6UTTcdSkU5visYzNK/preview",
+            "https://drive.google.com/file/d/1xQ1MdbdgSVLLEIMC-FmyeBNIBYHbutBM/preview",
+            "https://drive.google.com/file/d/1g2bixoTOCA1tMhyQe7PNw3i16QIUoN7y/preview",
+            "https://drive.google.com/file/d/1X7L1tSuhZ6xn1wqla8lKjk_FA2s7gtxC/preview",
+            "https://drive.google.com/file/d/1-prcM9f5Vdcn4w5JaHeIyS6ZzB998nXW/preview",
+            "https://drive.google.com/file/d/12jLmsf1wl3_Y-HytjIVdNiulFx1CNY7o/preview",
+            "https://drive.google.com/file/d/1biGzy0belpgYZlCELHk2htZ_PNUxRNSK/preview",
+            "https://drive.google.com/file/d/1sH35LzfHeOyMXp2nkKcY1oA5HBACISiA/preview",
+            "https://drive.google.com/file/d/19h23uvyXS1yUWB4M1ZT_ljbSgMxJAe-5/preview",
+            "https://drive.google.com/file/d/1hXd0yLdjEefmlwcOeXry50AZnhhBx2e0/preview",
+            "https://drive.google.com/file/d/1WGyqRUOwQkjGtoyJpub_pAobfm44Kyms/preview",
+            "https://drive.google.com/file/d/1YWK3zZLWCRPFIuwVUTjKGZ5sqTigeX68/preview",
+            "https://drive.google.com/file/d/1Vkz62kqvi0aRALX5eLSkv7WeeZqjMsTD/preview",
+            "https://drive.google.com/file/d/1Po7Tc1pPvQEemXDOdH51pv1DznAtUD-B/preview",
+            "https://drive.google.com/file/d/1U2-j90yF22Y75RJNssrFkdeCez35HESZ/preview",
+            "https://drive.google.com/file/d/1-45F2QZworPIb3K5fZ57oNfn8MEjpvzc/preview",
+            "https://drive.google.com/file/d/1k8YfKYi93_Not7UfBOW38J6rKWEF4Lda/preview",
+            "https://drive.google.com/file/d/1VK04QzS_6NYvCtniR1nNZcXysecUjyuW/preview",
+            "https://drive.google.com/file/d/1FQ0W4Mnf2kGz7GTUD-YTXC0pamdA-zGK/preview",
+            "https://drive.google.com/file/d/1knCPcxkY7dDGuyjPfsmm19eugsayKsRg/preview",
+            "https://drive.google.com/file/d/1rfxBBysLWXWTtMXIbgs_c_skV_y9l9i6/preview",
+            "https://drive.google.com/file/d/1z_IZ4TYaOvVHqtzf_Zeznz9qqxX1ISf-/preview",
+            "https://drive.google.com/file/d/1xkvRxL2WKgHAXgSj4DYI5AEaYxYBb5LD/preview",
+            "https://drive.google.com/file/d/1qe1bpoirfYGGXXMhWhieEz4p9UD8OER8/preview",
+            "https://drive.google.com/file/d/1yQ4cuwLijHCYIF5p8uxW8yFjrXY4cbCD/preview",
+            "https://drive.google.com/file/d/1tQY4FkPVCLTNFUYgi-J9fLvwLj0Uv_76/preview",
+            "https://drive.google.com/file/d/1lEzWGyIE3yCN0uvPfqc4fTNayslLPrfz/preview",
+            "https://drive.google.com/file/d/1n1DH3gFN9etcTz4r_Sr7ZcwKl_F5oORz/preview",
+            "https://drive.google.com/file/d/1qmLtnHOksN-XPvGDYDL0y7bSJQ2_lyme/preview",
+            "https://drive.google.com/file/d/1h6orX0PbrhzZ-DBPv-CLCvrhAP1bWFOd/preview",
+            "https://drive.google.com/file/d/1BrAJfyMOQxKdsKhFyPI1gqqDQNCeOELG/preview",
+            "https://drive.google.com/file/d/1eQaoSa39o5Ow_Hdgr-QVvzTjfVHl1YXa/preview",
+            "https://drive.google.com/file/d/1ODpa7qaY_QMb1oNEGHbB5UBXeIBapL_J/preview",
+            "https://drive.google.com/file/d/1-qMz0N_Ez0Va8022Sq4zCqKqMTrr5wrb/preview",
+            "https://drive.google.com/file/d/1PWM0xk54JMmifvQpXslwlbFJCPQ9a3zD/preview",
+            "https://drive.google.com/file/d/1LLZPlhpp4uykKFpIL9aiK2Mna1wtCx5B/preview",
+            "https://drive.google.com/file/d/1hKNoZQzilBkTL3nrqfK5RXlIDNCX5XgM/preview",
+            "https://drive.google.com/file/d/1cVjXdulRuaiR0DzIpVkHBNhK_PVceOJ6/preview",
+            "https://drive.google.com/file/d/1CmwKM1IHWgx8I-iAn1G7gAUnli1hjxbV/preview",
+            "https://drive.google.com/file/d/19kDSLyCHkj3-qyz08hTfDSWjkezAesXp/preview",
+            "https://drive.google.com/file/d/13usicyxG8vDRS2x-dJp9KGDe9uQkf-LM/preview",
+            "https://drive.google.com/file/d/1UI9k4cvv-Z6wtHybKE9okXMWHq8r18nx/preview",
+            "https://drive.google.com/file/d/1QLIacrL3PEICUGkKHc1oGhZcX-EwPtz4/preview",
+            "https://drive.google.com/file/d/14O2KIZmoy-DJcz4po7rt_vUKqDa5sAWt/preview",
+            "https://drive.google.com/file/d/1F0Vdg6jLCUUypibZUQwgN840T0PQvUJk/preview",
+            "https://drive.google.com/file/d/1t1tkT0F0jK2JX7ffjdcmUSo8H0CbFHba/preview",
+            "https://drive.google.com/file/d/1pZdm4LfwF89j1W_ioP8IK2GbteLVLhlX/preview",
+            "https://drive.google.com/file/d/1tbnxneeMp3qgeGnHhNpl5MGYEUYQIzWO/preview",
+            "https://drive.google.com/file/d/1n2j8twgPDld478LQyVGn8Eq-8jQh575c/preview",
+            "https://drive.google.com/file/d/16cJBsfcKi2znzGRs_moIM4c3LVppBaCj/preview",
+            "https://drive.google.com/file/d/1q9V5bijQVolDx3z2kbET7KVBaPKyj1iW/preview",
+            "https://drive.google.com/file/d/1aiierwv6VtjFhXPlY2sX8Y5ZLewCeUnZ/preview",
+            "https://drive.google.com/file/d/1UxixpxjiUw-6rtQYpyXF0PogDCNYIAkA/preview",
+            "https://drive.google.com/file/d/1fwO2aGB_qB9kXAdoJSPOls74dsjrMO0s/preview",
+            "https://drive.google.com/file/d/1DOyREsZgi1RTijk5XNkhySdRSpjDZS--/preview",
+            "https://drive.google.com/file/d/1OAwAVimWRr6uNaEy0NakTP6VODD6KXZK/preview",
+            "https://drive.google.com/file/d/1zBuGnI6yCQ9XshifOp8FaDkvNBStJdue/preview",
+            "https://drive.google.com/file/d/1qFiiU732piSc0d4XPwoyataVqClGNStn/preview",
+            "https://drive.google.com/file/d/1RcJEKMaXDP6X5Nfi1sfTyf9HQWLucL3H/preview",
+            "https://drive.google.com/file/d/1cNHUkCEoiy0Ec6Fm91YcCzqC58iiUsmy/preview",
+            "https://drive.google.com/file/d/1Rml6XOQ3BCzcRZY2SW1o8UxyoJvcr0-6/preview",
+            "https://drive.google.com/file/d/1WSD1Bn_wiH0Hw_20z61lRYVukgd1kHaM/preview",
+            "https://drive.google.com/file/d/1qm2wzLWtW5MjiUQ-_-w9fFjJD59MxLd4/preview",
+            "https://drive.google.com/file/d/1ijP5tTqkkQmFh_Y8ne6wSvnJxljFim66/preview",
+            "https://drive.google.com/file/d/1LdwSnaasm2j-mUJZ-Xk_WYCK5khkW36Y/preview",
+            "https://drive.google.com/file/d/1m-a_0lW4hvJpwb1UL9_09ueBh0ulQw5j/preview",
+            "https://drive.google.com/file/d/1KUpfMXeD1qYMZd6jJTz07Y_SfEDLPYCu/preview",
+            "https://drive.google.com/file/d/12e6cbHMAF__AR1TQekxG7um_I9INM_Wf/preview",
+            "https://drive.google.com/file/d/1ME6Qep4zrG0knUBrAq13JkK8CIl5aQ88/preview",
+            "https://drive.google.com/file/d/13djk-5SSuq8tH5r58VfQ5IMuXQRUPq9Z/preview",
+            "https://drive.google.com/file/d/16H60gmCbeEyTiosbwrD_eJ0NaB91fHQU/preview",
+            "https://drive.google.com/file/d/1VD--NnG_5lUt3lC2u7DF8NX9Plwnw8tc/preview",
+            "https://drive.google.com/file/d/1LEzToswDySMGOn1FdD01tRKNl-TJRNlC/preview",
+            "https://drive.google.com/file/d/15anw55wqdJPRFqR-aUoZbRskep0K3ToT/preview",
+            "https://drive.google.com/file/d/1eVTYCwWnbTKyxvPBJ3xRTu7BV1nguiAv/preview",
+            "https://drive.google.com/file/d/1FhrySM2VZkQ2YzFiBu73mWr7yHtvrWRi/preview",
+            "https://drive.google.com/file/d/1erPFKSU1vk_hZG0QsLeRwXlrPajBc_ng/preview",
+            "https://drive.google.com/file/d/1rvFt63QGJ1vQmX5hWZPng3nbSWyIRkGu/preview",
+            "https://drive.google.com/file/d/1hI1cA_QAIegPZbh1Z-2jqjGfbvHUyJGE/preview",
+            "https://drive.google.com/file/d/1a1WGJoGsVBkyCg37DLoyLs9eMF51F-po/preview",
+            "https://drive.google.com/file/d/1cGFaq-V3YiYCVa7m12jI1GV2B3gCBGqn/preview",
+            "https://drive.google.com/file/d/1LThW-VF_arbPvqPw_F8hD2uF6HeMEg3E/preview",
+            "https://drive.google.com/file/d/1yAaqsfoMqml8UC6wK7dwmCUnDbRU7OxH/preview",
+            "https://drive.google.com/file/d/11-etP9Mk1Dh39cou1rnIhjkzTNhKO72K/preview",
+            "https://drive.google.com/file/d/1nsSvFk1-MWXNzk6fidhbYdp9Ef5bwFW8/preview",
+            "https://drive.google.com/file/d/1lXHJOi5J_-vULrKF-imVk6ooKtnA6LAI/preview",
+            "https://drive.google.com/file/d/1NKDCRL0HYdOiC7hO0NioKmfoJRtrsHIc/preview",
+            "https://drive.google.com/file/d/1XYmcmS_sZPh-deiCoPm81oTV5reFqjLP/preview",
+            "https://drive.google.com/file/d/1BZgtTSJR0p-mrL-2OLoL1T72NDEKMqIn/preview",
+            "https://drive.google.com/file/d/1zkLHefKvgq0ryd27ZdawRc1LO315OtBU/preview",
+            "https://drive.google.com/file/d/1NpZfdhb2BZrjZVOj7zVQlyXp-WWRDkTR/preview",
+            "https://drive.google.com/file/d/1Qt1fy-i1X5PVzylI3nJZO1v_7OgYZbUh/preview",
+            "https://drive.google.com/file/d/1RAW1wMFHcZkrm496EdC95s-b7fErNJJ_/preview",
+            "https://drive.google.com/file/d/1so4UikMNLoAxYcd785NUM3NpEXSRJ6TZ/preview",
+            "https://drive.google.com/file/d/1octeyjMVjXKVVYmyCLM1OtgRf07Lkxzw/preview",
+            "https://drive.google.com/file/d/1yeGRwH1I7-R8YynofqKCdQiHMZrNpHew/preview",
+            "https://drive.google.com/file/d/1x7NxgQLailUvgdBpjA37z_KrIO_ZF8dX/preview",
+            "https://drive.google.com/file/d/1X8IkdCEz989Mquyjrc9vBvv6SZGMZbBO/preview",
+            "https://drive.google.com/file/d/1mbe9thKCf86TF4y1sayH_wSAloTbPPRq/preview",
+            "https://drive.google.com/file/d/1aOXgafBMHKOxexPWINVPB_Gqs8EnS6WK/preview",
+            "https://drive.google.com/file/d/1L2BEB7CqA7mu14VmfbfAJbWTdoXmO_XC/preview",
+            "https://drive.google.com/file/d/1pgH_JrmFzVBUch9kyBedc7zlHoUuqGzh/preview",
+            "https://drive.google.com/file/d/1pbN_JH3T5TfKXSbcvaCUfhV0Qy0YE-IH/preview",
+            "https://drive.google.com/file/d/1Pt2EvQmdni1y-H8G10hfjaB7rwiV_i2g/preview",
+            "https://drive.google.com/file/d/1YXWZ1w6XRMTzlPqQXORvOZ4r0ELQfkI3/preview",
+            "https://drive.google.com/file/d/1plcN4LhTyP6NZdTYB8IvbkhSuvEkb6wX/preview",
+            "https://drive.google.com/file/d/18UHYNA6Ksn-Hqu7L3RVRhDZGHNB5z8VI/preview",
+            "https://drive.google.com/file/d/1mn1cLb7Nof47vTXD9l7TOKM7_wmRWALz/preview",
+            "https://drive.google.com/file/d/1afbxsEhJiA6BC45S-hyMB3FAZUJ7SedZ/preview",
+            "https://drive.google.com/file/d/18Uyo46hy-0yoHcc1Vg2EuilYjPPn41jH/preview",
+            "https://drive.google.com/file/d/1Xc7LSr2gA_ZHczzreV9rpCo4CqlFC1Fu/preview",
+            "https://drive.google.com/file/d/1L7tDZPt6AvLY55ki09ahJbJHtQtIrnxb/preview",
+            "https://drive.google.com/file/d/1nL56chQHNFt-LbwOxXuhnHlfi-12a0FZ/preview",
+            "https://drive.google.com/file/d/1Lw0NhgkePOFRWclAwelMHkh3cPJwc-4p/preview",
+            "https://drive.google.com/file/d/1_M0CgK4QpeaQiU1AdLBTlXnnGqA8G3aB/preview",
+            "https://drive.google.com/file/d/1AaTmuGPTPvEk_3x0OJU5V7Mfw6POY1k1/preview",
+            "https://drive.google.com/file/d/19pFSVG8IIJVSmpizJoVfvbdRY_oYAUzX/preview",
+            "https://drive.google.com/file/d/1QbAcshewWIsz1pJS_4jP8Tg0x4u0iJC2/preview",
+            "https://drive.google.com/file/d/1zx7gBC0erDKBJQfVTpfFC2zvJtbQT3hM/preview",
+            "https://drive.google.com/file/d/1XTLXNCMKrRKPCQCPS_B65LeNt2PaFGHy/preview",
+            "https://drive.google.com/file/d/15CHlHfPo4oD-9R8OacRRPC96IEj1kaoM/preview",
+            "https://drive.google.com/file/d/1FMEOR7PpYZpljTxA4KXgHbXzn_uVLKcK/preview",
+            "https://drive.google.com/file/d/1fHvCCtaGWcU0koru8AyAbXSBmOqjBAm4/preview",
+            "https://drive.google.com/file/d/12oevbeOHgzgYekTwphBEaCMUb62jyjMV/preview",
+            "https://drive.google.com/file/d/1UfMAowZT5fCSmiLUndmhuISAFkcv2IbS/preview",
+            "https://drive.google.com/file/d/1L6VPuXLdDJykLpuw01DY1OOqECLIFp__/preview",
+            "https://drive.google.com/file/d/1AGaog6lEnq1BaKeyW8sulqwHGRM4ZWWW/preview",
+            "https://drive.google.com/file/d/1zmjEsAsQa7q5m5MRY2YEty87Z_WFw08Q/preview",
+            "https://drive.google.com/file/d/1Wir840H4SOsnsd0onpzB9cU_czjlRrTG/preview",
+            "https://drive.google.com/file/d/1ynvnqdKWZzIs_FC3Om-MbC9oG5OCA_CY/preview",
+            "https://drive.google.com/file/d/1kUfFlAhiOF8bzraZmK4fg40Efu1LNBNn/preview",
+            "https://drive.google.com/file/d/1Y1J5IeUhlAiavt-URoSsrYjy_yvWugG6/preview",
+            "https://drive.google.com/file/d/13eog1MLezgZyt70A9Cu0CLVM6IdkY1NN/preview",
+            "https://drive.google.com/file/d/1bkVooLMf0bMMh907mGFPZsMwaZW99A1n/preview",
+            "https://drive.google.com/file/d/1dTZTRzWjIvk3R05J0NkDm_5qL42j4QNz/preview",
+            "https://drive.google.com/file/d/1TTsm0_H4ht5J0ZVTjOK4xTG3CKPorSLL/preview",
+            "https://drive.google.com/file/d/1LjPuRw4BzYHghwass01IkwZzR00l2u_w/preview",
+            "https://drive.google.com/file/d/1tw2JecyzBWtsnrUrCHXkOBU5zjHRfmWl/preview",
+            "https://drive.google.com/file/d/10AsqerJTnk4xmdcAcuM6WtgTZaBaGZOm/preview",
+            "https://drive.google.com/file/d/10A8tv83awYuRvI-LXylWQHLAApfmABqx/preview",
+            "https://drive.google.com/file/d/1jB6ojjf6lkUX2O3aSlM40kLASnlhj9R-/preview",
+            "https://drive.google.com/file/d/1JhvwhtrN1pdigJ8nYPFYzC6eK6ZXd1a9/preview",
+            "https://drive.google.com/file/d/1Qiz638yRokS-i4gMiDdwxEhyGO7bZxD1/preview",
+            "https://drive.google.com/file/d/1j-TBWeBhm3tNdlcttXaz5BTOuYFxdzEj/preview",
+            "https://drive.google.com/file/d/1B4-Xh_0GYuJdum1CiJJYPeZEYpVkm-8g/preview",
+            "https://drive.google.com/file/d/11L6b-uP6Ah_NM3zp_BvomJxygvFyp4dL/preview",
+            "https://drive.google.com/file/d/1NhqpgzqV-oCfBI3lHrR6qSrZ2T726UiX/preview",
+            "https://drive.google.com/file/d/1AxBcdejtjY_nt8Qj0uunEwQpr_f9lm5c/preview",
+            "https://drive.google.com/file/d/1xqeNj7OPvh8TPidMZAmtrgaN9ZKgHj_S/preview",
+            "https://drive.google.com/file/d/1xjj9dz-znAw_n3dSDbF5_eHeBouKqnPl/preview",
+            "https://drive.google.com/file/d/1rTaQNo2z1KUGi_urrYclS-5qG1zbMVdQ/preview",
+            "https://drive.google.com/file/d/1k398gUd5we8lLvjY2KcNjLWLnbWm8Tks/preview",
+            "https://drive.google.com/file/d/18RMiStPGgyJtufLEdoOv_hAeeha_g7ic/preview",
+            "https://drive.google.com/file/d/1lzqHr29cUDQh_cfizHxuIVNn6d0CT57t/preview",
+            "https://drive.google.com/file/d/1hjMcznpHVJSFHPHTxxmQtgYpAxkAXjnX/preview",
+            "https://drive.google.com/file/d/1O4dAxnMW0H9ryp3c4m1ESZ1UZ927_Pm9/preview",
+            "https://drive.google.com/file/d/1gviF0StszdJCNYOAfsG2stc8E7O4Ksm7/preview",
+            "https://drive.google.com/file/d/1EtA1LIHd7ozAjhLDP_YKZqeD5hSuOhUE/preview",
+            "https://drive.google.com/file/d/1XrNRKw-tqADj40y5T8v1KBy4B2LncOq4/preview",
+            "https://drive.google.com/file/d/1qUfAa8VhGTXWKwsZUvPJnWgAx7oeeq2K/preview",
+            "https://drive.google.com/file/d/1o_6cdQEBYO0bvdOvci7w-yaBAQhgcqu8/preview",
+            "https://drive.google.com/file/d/1M3zKJXGVrAkwUNeVCsI7jHgZ3UfUz2Kx/preview",
+            "https://drive.google.com/file/d/1mPAUbkZFpHml8uNISiBXXdx0hlK2F4i5/preview",
+            "https://drive.google.com/file/d/1zKkyRjpsQDJQRvXy1plqQLw1-ngAv9lW/preview",
+            "https://drive.google.com/file/d/1o1JzEzwVcEZWrSDsxNSqXWYqKaT7KRcZ/preview",
+            "https://drive.google.com/file/d/1y_UaPKZJIoBZiSe9iF4fwFYshf5QI0yn/preview",
+            "https://drive.google.com/file/d/1wGzIrd9sZv1xQREPBUC0hR6w0G65VJxl/preview",
+            "https://drive.google.com/file/d/1j8Vv3fQUP1eochsPpFx0EmcXRZwhR_P4/preview",
+            "https://drive.google.com/file/d/1yP3oR9yyYftV-Acf9BB25W8-5ArJ4ZZF/preview",
+            "https://drive.google.com/file/d/1RsAZGolIo3mIp60WNYVB5ki9uL2vrpHX/preview",
+            "https://drive.google.com/file/d/1rdI23UEudoiYmk5rexaMcqvJsGuucPmW/preview",
+            "https://drive.google.com/file/d/1FmJgPEm_p7AXkdkBu18Y2pB_RY6kMOe0/preview",
+            "https://drive.google.com/file/d/14o9CUA-FL7eeIoRIeMpIJbOaL73pSSMG/preview",
+            "https://drive.google.com/file/d/16PkgcY_Feq6DNoCMOKFTcOjafs4jJ3OY/preview",
+            "https://drive.google.com/file/d/1lZXQtFq1mUR_Sz3_cP4x7OleusafhnCq/preview",
+            "https://drive.google.com/file/d/1lc-bM30Ptny9dRbQQK1l8aPAShEHU1g4/preview",
+            "https://drive.google.com/file/d/1YTVXlpCjPmOQnHOW1tDlQVHzxpKXdE09/preview",
+            "https://drive.google.com/file/d/1DLNySQVQTe72iY8YIDe_L3Ilz8uS6jav/preview",
+            "https://drive.google.com/file/d/1vIZyPaShGjkuqD-TREjSuZyZDgvvCfiW/preview",
+            "https://drive.google.com/file/d/1AO_xVb7AVRmDkwHAvzGbvpmbbjvpkQ8F/preview",
+            "https://drive.google.com/file/d/1z2lJUX44A231EY0A2Wrjr5e6T2ZgevAz/preview",
+            "https://drive.google.com/file/d/1poWft5em6yg8sTHpHPTwL83VJc4_dOSR/preview",
+            "https://drive.google.com/file/d/1YmIq1iR9zY-WJY2LfWWF98ICVLSyvdue/preview",
+            "https://drive.google.com/file/d/1pgZeSb3us9es0SW3R0BaJgrBz7eE3PQW/preview",
+            "https://drive.google.com/file/d/1nQtowcl-PLXpKka51k6O38BlBzyTS75_/preview",
+            "https://drive.google.com/file/d/1Zy9nKhmElECv6QMbfIZdGWlr5mIpNxEF/preview",
+            "https://drive.google.com/file/d/1Ybj1kNZT2U4mivfQ-SJ1Ww7I1Q5_bi4d/preview",
+            "https://drive.google.com/file/d/1mhiOxDsfQ3jJbsXXQKwo3mTRu19IJRlX/preview",
+            "https://drive.google.com/file/d/1FwWcZBsHTFI_M6DMYVVlq9qSAYrIp8Hp/preview",
+            "https://drive.google.com/file/d/1picxZw3Bn1sKFS0LKKTWi-GHcLkkdG9Y/preview",
+            "https://drive.google.com/file/d/1nhWphUnZ6YFLdwgRb81jOlTypsZFpedC/preview",
+            "https://drive.google.com/file/d/1LSJqlUzZuell56l_GN4rx_inQQgu_H1H/preview",
+            "https://drive.google.com/file/d/1ekEEIGvGHYidvUuyUlZM9cw67x9_d7JI/preview",
+            "https://drive.google.com/file/d/17wi7k8u2SNjUOwSslENE7sgooe-Rlyua/preview",
+            "https://drive.google.com/file/d/1SLSiRtfJ9ijDzilyXOwGNBhoLVLqrBi2/preview",
+            "https://drive.google.com/file/d/1gKqHMU5N0Vm3hqsILUEBBdtQrlYXcT6B/preview",
+            "https://drive.google.com/file/d/14eTMfkZbSMhq4N6J8LKuSIt1RZF7mlx6/preview",
+            "https://drive.google.com/file/d/1siLbocYMVgJPpKsLS0OycImmQ6xNfTI4/preview",
+            "https://drive.google.com/file/d/1yfqcteCxHPTUhGqVoJnqN6Pw42Dk5w_Q/preview",
+            "https://drive.google.com/file/d/1Zk-8FKhKBih4LKkYLs6iRtttz5vRLHYI/preview",
+            "https://drive.google.com/file/d/1JV0HeHKcwR0Yu2mbvccXf4XGqd7P6biz/preview",
+            "https://drive.google.com/file/d/15pVnZxU3U81YiCzLQB5wwyBgdQfet-Uj/preview",
+            "https://drive.google.com/file/d/1i0ibtOwNN87-8ZjO8Lcx30IJvp-TPkVa/preview",
+            "https://drive.google.com/file/d/1UsaO4r5yzvHcKaalY5jxV3hblqgBTwyk/preview",
+            "https://drive.google.com/file/d/1kcmQ3ZNs8CdQqziMdMDK33ArQQXqEj7W/preview",
+            "https://drive.google.com/file/d/1JMRJhroO_7H2d2UHlBTcoOg9pYvuYXrD/preview",
+            "https://drive.google.com/file/d/1l1F4aHl_wEOHabcb3r6t6ZcIr4ywQSkf/preview",
+            "https://drive.google.com/file/d/1hMINdyfxxDTdm1M7Te14-aWIaPr2QVPd/preview",
+            "https://drive.google.com/file/d/1BLJyElOOoITQhKvN0mP3IaoCerm4Aj7J/preview",
+            "https://drive.google.com/file/d/1CP5ybO6ILM82EDF7Jw3XYl_5M4Es6qSZ/preview",
+            "https://drive.google.com/file/d/19jfSkkF63VwtRubhxgnOpQb6txfKImc6/preview",
+            "https://drive.google.com/file/d/13L9eH8Jp5voW2RSb-uZ5oWsHIlf629zQ/preview",
+            "https://drive.google.com/file/d/1ypiKb3VjW9ea5ttAxIVVkMn3JaR8f7UA/preview",
+            "https://drive.google.com/file/d/1mhKPXX17LA-fgczoygumtMIKMfz2zPuH/preview",
+            "https://drive.google.com/file/d/17W4PeW7MyOwkXSISO67GkdKODFzChJHV/preview",
+            "https://drive.google.com/file/d/1cOQub-qzZyrkZI0hrZFk4g4-RnidYZnc/preview",
+            "https://drive.google.com/file/d/1ZERyHZKOU7BjXfHrqKMkYi1SjwWMwogB/preview",
+            "https://drive.google.com/file/d/1QmUR1wWAF_Wr3bc2A_QW2mHiDRgq2804/preview",
+            "https://drive.google.com/file/d/1ql3mOWvswKMGPUxHlkPHMvFCMNP_k0Jy/preview",
+            "https://drive.google.com/file/d/1fZuIMB4cRhh3goE6mV_t6GsiWlYsoMcI/preview",
+            "https://drive.google.com/file/d/18YKGvVb-kccAZYyPsyu5ayqSPTVYNCGS/preview",
+            "https://drive.google.com/file/d/1cuLLPoJlO4MyIy96UUlo1Txnlp_uaPkr/preview",
+            "https://drive.google.com/file/d/13LK53JGmx-6pHsYYBmXTClLES4rvc0Dq/preview",
+            "https://drive.google.com/file/d/12z-UpvTgVNdpntA0mQWGrAHjdGkvYEUe/preview",
+            "https://drive.google.com/file/d/1q68-x98W3W3MHo-BYmjcxMg_xazy2-9M/preview",
+            "https://drive.google.com/file/d/1Q51Pfkh4BzAjRkG-TPeb-9XRaZTXISMU/preview",
+            "https://drive.google.com/file/d/1PUdUI0uJCIs7UildTVM4y-cYK3BvnsVv/preview",
+            "https://drive.google.com/file/d/1sqnbnbN6ItNmy5sD6J7SKz_rVLriFom6/preview",
+            "https://drive.google.com/file/d/1biMbich5ygT_MTRIPvcnTiWdNhibbyZm/preview",
+            "https://drive.google.com/file/d/1tys8Q00GWX5g1chGVKYSJ8fwbod_eeAl/preview",
+            "https://drive.google.com/file/d/1gELHuC5HTU67GbPo7gGZedlRTWfUQ-JL/preview",
+            "https://drive.google.com/file/d/1SRrslaKPkK-0HpotPpiSSWRh_ATfqf3P/preview",
+            "https://drive.google.com/file/d/1jltQ4x9a1ITqHd83npxhZ_jIc6qu7WLF/preview",
+            "https://drive.google.com/file/d/1XsuUZlzL4FOIRXPx3pfAx4Os17ePqGwB/preview",
+            "https://drive.google.com/file/d/1UQq8qrPcy_yNyQ2GmB2z07IXYghqd6ch/preview",
+            "https://drive.google.com/file/d/16kRyNw0CZaRLa8yizFWdPxNkjGTON56_/preview",
+            "https://drive.google.com/file/d/1HNaLb2Ddil9FBg4Z_w2-yo1UwSyk24Gd/preview",
+            "https://drive.google.com/file/d/12VReHYo_KyirKMF8ReGalS2GCYoQtBEw/preview",
+            "https://drive.google.com/file/d/1V4qMKLcewU3DFjIDLZUJ6tZblJ3Af81P/preview",
+            "https://drive.google.com/file/d/1c1hPCPjizPXDnPA28soUzHIWwuiJaVhO/preview",
+            "https://drive.google.com/file/d/1acp7O7UuHUlK18x1ku9NPgHf5vgMA406/preview",
+            "https://drive.google.com/file/d/1ihspt9VZTbrPnh8CMCpYSes3wbCHNRtn/preview",
+            "https://drive.google.com/file/d/1fP_v66_ddYsEo4560wukCFhluzVLU8UL/preview",
+            "https://drive.google.com/file/d/1XJMpnDWRB8xOMKBiAnhXyYBghQpmNX6X/preview",
+            "https://drive.google.com/file/d/1UJ-L07j9SlQ-8mvDbdD56XN7aHYq8N9P/preview",
+            "https://drive.google.com/file/d/1gqh5Jym9BIZAIfLyas2Mx3juDbiWqnLv/preview",
+            "https://drive.google.com/file/d/1U7A4OxnuFog8OZRD0lCdLTn5gt6LviVM/preview",
+            "https://drive.google.com/file/d/1LVDOS_TkudHXBjfswPJ0o_fqmPmJhHe7/preview",
+            "https://drive.google.com/file/d/1BCH7v5htqW07MCrJ-11_OzW3mlvJ8bgE/preview",
+            "https://drive.google.com/file/d/1e2Jv_y2FSwxkPfL1GbiBGbiZvGJjIpP7/preview",
+            "https://drive.google.com/file/d/1nJmYGjQtIsIVlI5qEjPxWyh8okW11RgR/preview",
+            "https://drive.google.com/file/d/1IwfgCFE9Xc_qxfyaMVsGzImNmYWidFSn/preview",
+            "https://drive.google.com/file/d/1zm6nZ_NVKO510cAhBJ1kdJC8VqJEOJQ7/preview",
+            "https://drive.google.com/file/d/1skKCehpjQv4TnIE0wFCyCpM00yqL4HvS/preview",
+            "https://drive.google.com/file/d/1ayvQkGMpgUUnnU3ViAyj6pdhR5sqbn1Y/preview",
+            "https://drive.google.com/file/d/1PcSsEpnStkxNrPx1zOfgH9tqdGgmkksp/preview",
+            "https://drive.google.com/file/d/17-9VbraxWe5OoH6cIBp4lyGD5D4Fmlcm/preview",
+            "https://drive.google.com/file/d/1-QqswtlqFSYrRKi2pcGbulVAtQ_RQ5Mk/preview",
+            "https://drive.google.com/file/d/1BESfUls7iwjZYyDDXBDmYATTd_TO6bkD/preview",
+            "https://drive.google.com/file/d/12HWr73SxuMM4UMq0D3bldCany3ouRDbx/preview",
+            "https://drive.google.com/file/d/1ILWFUBokcnefEh0Th9Cs9p2EbUUznwXm/preview",
+            "https://drive.google.com/file/d/1Y4NOmmXOa8mksVJnQM7_ZjUm0YgqT1EM/preview",
+            "https://drive.google.com/file/d/1nK3lpTZEzdlAagynJga_xHvP-kJ1JgNZ/preview",
+            "https://drive.google.com/file/d/1c67LpYLQyPQgUi_AS7fpK4FtJsmt8Ndz/preview",
+            "https://drive.google.com/file/d/1iHOnMoxaFUB3Gx6cjJiuYluM47yjre6V/preview",
+            "https://drive.google.com/file/d/1e7DMgN-Xo1nL81FmnKBfouTAB_2L4iXN/preview",
+            "https://drive.google.com/file/d/1fLxccOANC4Ez1rt4g29Btp6YpnzD6pup/preview",
+            "https://drive.google.com/file/d/1IM7POIOmgC3BVc0AdThLm149u_o-KIJ8/preview",
+            "https://drive.google.com/file/d/12E29lDbbLD6_PQ4nTfv_tRKukCx5JdUE/preview",
+            "https://drive.google.com/file/d/1cd1WasbRnAcsdP5RiB7u8t2AMxX_4-Rv/preview",
+            "https://drive.google.com/file/d/1Hh0E6_WjZv3H263nyC8tq3BV5ipHX5Lx/preview",
+            "https://drive.google.com/file/d/1YIe24GeAqTnYxH9mOlUkcP9jYBF7bUHJ/preview",
+            "https://drive.google.com/file/d/1Z_EdpzZnWBl5bgOjPPuVaDtCPUna6dDW/preview",
+            "https://drive.google.com/file/d/1HGjfc4L8twnFpG6SJQAYccEJDajHD3A0/preview",
+            "https://drive.google.com/file/d/149Bq-pCHuw3DwbLl9Y8VRyXN4femSDko/preview",
+            "https://drive.google.com/file/d/1c6pT8AumNQ59Aig4Te2DGfFP6LSGq5cb/preview",
+            "https://drive.google.com/file/d/1bJm8gxZCjjGUDWTCiKDGCqF28v9W_fYh/preview",
+            "https://drive.google.com/file/d/1mwhomt94yokIlE-PzhQlDfZvsgXk6fcP/preview",
+            "https://drive.google.com/file/d/1VTxbpz25uMde8xaJWCoLIm4FveSAwaP1/preview",
+            "https://drive.google.com/file/d/1jrWlc5A1LQGdDcWO1bSGAWIv4QmEbRyJ/preview",
+            "https://drive.google.com/file/d/129MkZKAiQb970Qin-mmF9KRkmRzvYN3O/preview",
+            "https://drive.google.com/file/d/1CmbecxAAtgnNB3iFopqfLPj29fUtXt_n/preview",
+            "https://drive.google.com/file/d/1BNVHDhDb3Ppooa63mDZMHetB1WMpwNpR/preview",
+            "https://drive.google.com/file/d/171CAUC9IVUD5x_RyM_nwlc6rzHkmvlHr/preview",
+            "https://drive.google.com/file/d/1maKfJB-lmar3CRNApKYdQz4rDmln7p_k/preview",
+            "https://drive.google.com/file/d/1TAax2P4woUc8CaWsDraywVg9c549xIDW/preview",
+            "https://drive.google.com/file/d/14-eGK9hbJcSf_QXSFVdJNrmZncLBDMsT/preview",
+            "https://drive.google.com/file/d/1U6SX2kOZn712hlJpAJ65QkDMXxr5Hxi9/preview",
+            "https://drive.google.com/file/d/1O1LK-fv08yL1f0hAXivKpyF_IhKXdg-h/preview",
+            "https://drive.google.com/file/d/1RQ4OLe5C49aSegBcFw5hygBfoG6QMPXj/preview",
+            "https://drive.google.com/file/d/1ospZj8DO3iUosEGwFQq506NK17OSUu72/preview",
+            "https://drive.google.com/file/d/1TJz0XJr8x16Xoo8tNIBUQVIELnsIPWuK/preview",
+            "https://drive.google.com/file/d/1yklEGkOiM00E00Zts_ERtnmru5v4xbXG/preview",
+            "https://drive.google.com/file/d/1dThleOkLK03EVbytoYupnCLbNxho4mN9/preview",
+            "https://drive.google.com/file/d/1Ptg1_q8oXJc0Ot8RkFqIclPxqR-Ga9rb/preview",
+            "https://drive.google.com/file/d/1Q_qjDm-rYw5Y--atYWlpdeAN517d6Uxk/preview",
+            "https://drive.google.com/file/d/12cOaai22yCUD-g5Rpvu4XnyjcTtvPAW6/preview",
+            "https://drive.google.com/file/d/1TzYIA7FihC8ARcgMxQZKt5UsQ0IFiOz9/preview",
+            "https://drive.google.com/file/d/1HtF7iw67Rc4HLLT2MGPXOWJ1-Oum0qZh/preview",
+            "https://drive.google.com/file/d/1PkcnEA5KrwCro0pq9kP4Kep5TEsPmYQC/preview",
+            "https://drive.google.com/file/d/1Zg6doQgLOIx561knEHdH5FuBoJPQlCnI/preview",
+            "https://drive.google.com/file/d/1t7-jcWZRKHXABmAxwqB5bMPj6wk4EyO9/preview",
+            "https://drive.google.com/file/d/1rrEGPqyJpqkQ4y9phy-JsLgD4YCzuXG0/preview",
+            "https://drive.google.com/file/d/1QCGPQ9F9o9XSwOwtvPt58nqDbtQFcExB/preview",
+            "https://drive.google.com/file/d/15H4390x1Yt-fvIuD3GwUHJSBQf6eZqMu/preview",
+            "https://drive.google.com/file/d/1SoJYU6USqTtFhc3YyuXBvPigv4M9exlf/preview",
+            "https://drive.google.com/file/d/1T0rODXcy1qmt2AdvzPZaB-FrLKrjR8_8/preview",
+            "https://drive.google.com/file/d/1sk6nq1QpY0lG4hnhWPKFoqAUQNEsQrqi/preview",
+            "https://drive.google.com/file/d/1h-KzQ8R4O1nhSVTqZeoDZHQP1NmBVkhZ/preview",
+            "https://drive.google.com/file/d/1KJ_Mjz5BdlE5_-PTQMokcaZZg9NptTY2/preview",
+            "https://drive.google.com/file/d/1ypGIfDVE1rWIMvEdiN8lcaePHT39B6W3/preview",
+            "https://drive.google.com/file/d/1INKSR7utG7KJSilh30p3wurc8oDbRXyT/preview",
+            "https://drive.google.com/file/d/14rQvz_Cm18pums8WcbSIgWIAe18LXxzh/preview",
+            "https://drive.google.com/file/d/1BenxGw9r38bWHioy3Qj2NzxqxIQbIKm4/preview",
+            "https://drive.google.com/file/d/1JCDimwUuRHvT8cNt86oKZHuxtdBjrh0P/preview",
+            "https://drive.google.com/file/d/1fLQd9r7_RZd5-o4nqFjZZ_xxPcAEQUCj/preview",
+            "https://drive.google.com/file/d/1ShNrtBfwEwa1PgEX_bZw9bjIhW1QzYTh/preview",
+            "https://drive.google.com/file/d/1-zNMtbwaczNNbvqAGGbkMjuLpQk6jKme/preview",
+            "https://drive.google.com/file/d/15C3sLFKv23NHjpXCSTe2-CufXv7IK4HX/preview",
+            "https://drive.google.com/file/d/1D1RF_i56ZG9dqi7Y_Jxzn8RK-ZUn1feo/preview",
+            "https://drive.google.com/file/d/18_nyOcsZLQx_nb_URJS9CST04a5WUEji/preview",
+            "https://drive.google.com/file/d/1Vpn1pFBTxFbcVztUJMwYet7u03eyyMsI/preview",
+            "https://drive.google.com/file/d/1G_VjvsCpGCrUNFfXC6wzr4M9cVJ7CkBq/preview",
+            "https://drive.google.com/file/d/1lhGrOsGOB4jLV0dOXBzapXPvxDzQcfO-/preview",
+            "https://drive.google.com/file/d/1hQXxNaIXQP6XUMwQWm_qb9yZxlwOfOMo/preview",
+            "https://drive.google.com/file/d/108NgAgmtCxt2fim7a8ti31dattUwYVpX/preview",
+            "https://drive.google.com/file/d/1fIgu7cfmgYEiLOMV1twtynH4bnQhWu3O/preview",
+            "https://drive.google.com/file/d/1OtWkyQc317v3RykBKV24hZAEM_6n5AYU/preview",
+            "https://drive.google.com/file/d/1T9OvPwNGGfgdlUeKJwCdvDN-70az0mnH/preview",
+            "https://drive.google.com/file/d/17L7c1IVrLfaSC7gTDS0DEDHudlwlmbq-/preview",
+            "https://drive.google.com/file/d/1ERMjI_Z-Le_ofMRG2lwJ1zq0IDSKINyT/preview",
+            "https://drive.google.com/file/d/1ExrLDB_nLTeIPKYUQxDmhx3X05V1C7KL/preview",
+            "https://drive.google.com/file/d/13oc47EwtP0ZhbR97psISDxqIXA7X_gc_/preview",
+            "https://drive.google.com/file/d/1eaOkLkPbjcmkylVdORMWLuxSzQ6EY0yp/preview",
+            "https://drive.google.com/file/d/1TZRRq6z_ysNYmIWd2XQFzknPkv9WfmDp/preview",
+            "https://drive.google.com/file/d/1STZi8n3JgtPpGRMOyePIf9Q-tTljvt0N/preview",
+            "https://drive.google.com/file/d/1FknzGbKgnBuYtkt88kLkuqWcldJPZuCS/preview",
+            "https://drive.google.com/file/d/1iypG123NcfRdlmDC4JE_OulI5cMJ22Il/preview",
+            "https://drive.google.com/file/d/1NRyBbNSZHG-zDAaG04cjum_LIHuss3Bj/preview",
+            "https://drive.google.com/file/d/16clZf2042XlYuqPkDEoabolh4xSSedsH/preview",
+            "https://drive.google.com/file/d/1Bi5vW21D60rF5PEjB-H3M9nBEj33IsAo/preview",
+            "https://drive.google.com/file/d/12YNahIhOh3PomAMgvi6xasR40HZIhsSn/preview",
+            "https://drive.google.com/file/d/1rB6utkIApAfUJr3mkTpYdpQ9wvLepWvu/preview",
+            "https://drive.google.com/file/d/1o7NxY-halSfb3hTVWRot30AOBRD_aD_6/preview",
+            "https://drive.google.com/file/d/1zncXPXsjXcE8wf7ETcEHZibkBkQwhCrr/preview",
+            "https://drive.google.com/file/d/1JolgBtW8_BZL-yTXhl9-KqvD6KqKm90o/preview",
+            "https://drive.google.com/file/d/1voHg9798b41pPZKCbxVpQ0Cp5_62YzR8/preview",
+            "https://drive.google.com/file/d/1favHELzkOrSAdaVlhMI1qKHg3oyWHUX2/preview",
+            "https://drive.google.com/file/d/1FRjaF6kAVs0x18wMtUkz9kL3Tw2G1Ka8/preview",
+            "https://drive.google.com/file/d/1PdVbhUDBjeeU0yKx77XW2X1ySFJYw0-V/preview",
+            "https://drive.google.com/file/d/1PWqHzjaPzRTZG0c1N0Abu2lAo63fahMf/preview",
+            "https://drive.google.com/file/d/1AHelPYKEnRanE7EC3r43h0RpLR-E_2TE/preview",
+            "https://drive.google.com/file/d/1G_-tQSxAzLBAw-83ggS5Qsb3ScmJO2ut/preview",
+            "https://drive.google.com/file/d/1utKSx-IUxAoojsQRBQuNbJbetjwxScTM/preview",
+            "https://drive.google.com/file/d/1baE3VRICFpbov7IH48Y2y7MWSV6P-tjK/preview",
+            "https://drive.google.com/file/d/1Gs_ww1vtG4qQQy3iL96wnhNgTIAXcclE/preview",
+            "https://drive.google.com/file/d/1rCupMd_rNxeopHOv2-ErNU6DC_kbhauo/preview",
+            "https://drive.google.com/file/d/1n5OjWyGfMaZ4H6nhgvfMeUZxJ4qaEt8s/preview",
+            "https://drive.google.com/file/d/1yIxLU7QxwLv_KoMVjiHMZlK7pRPkd9IP/preview",
+            "https://drive.google.com/file/d/1DA3oh3iWyC29Qs7jE8tPMBbrGGKvWRPb/preview",
+            "https://drive.google.com/file/d/1n-nLzZ8d3itm1f0hSLbfHg-KhmkrjqOE/preview",
+            "https://drive.google.com/file/d/1sC-8OpkOTe9v0WIEujf9XYuRuJWR9A3B/preview",
+            "https://drive.google.com/file/d/1NRF_UYtraHX8zCfUu3CxbCcOPmCp4AUc/preview",
+            "https://drive.google.com/file/d/1gDc6gC8Bt7-GRN8zAKxoaSIKZ2QDl4EM/preview",
+            "https://drive.google.com/file/d/1vmLNB0_oSgRLCLEXXgqHG1o6mv36Ews9/preview",
+            "https://drive.google.com/file/d/1C9tIPT7mA6AMV3oaw04WoUmbR2ztXToe/preview",
+            "https://drive.google.com/file/d/1lQhcf4E7zuC9XpMbm4K--XS_1MFutyJj/preview",
+            "https://drive.google.com/file/d/1DeMnMI8ei9CzQOadOlEwhuHwxrO87AAx/preview",
+            "https://drive.google.com/file/d/1O8r48Ui7CRF5E1uoKV_pY4EQPAnovuYN/preview",
+            "https://drive.google.com/file/d/1gsLvV9A1fhBxYGXIXJDQyhjBYY3Ex_E6/preview",
+            "https://drive.google.com/file/d/1MyxvYAo6hqnmjC52PNt98PdeoncSlDcv/preview",
+            "https://drive.google.com/file/d/1uWFicFFerRCXp1KwojXY0gh5yMPHtfqB/preview",
+            "https://drive.google.com/file/d/1sejokprSUj9q6W8EDQwJoBiFK_4rkJ5f/preview",
+            "https://drive.google.com/file/d/1q8HUQWBu_RUAUBFCDOQzPbF1y7K6E13o/preview",
+            "https://drive.google.com/file/d/15nKDKVnsuhfBoiGQMVogmbZCXsPx-MZN/preview",
+            "https://drive.google.com/file/d/1IImfPfvr2rBNJPBEJt4zTiBI_gqOG7Wu/preview",
+            "https://drive.google.com/file/d/1RwcGzRcPsia4aI8SaTccP3Y_zTsTklkO/preview",
+            "https://drive.google.com/file/d/1et3tHAXE4iA-3ekaMrjSkIrNE50HiLtw/preview",
+            "https://drive.google.com/file/d/1ywlMyx57U2Thfk2uZd2Ltwzv0YLNAjWr/preview",
+            "https://drive.google.com/file/d/1-WxwlbsPktbje9aZ-F27bChHzXc1Yt_b/preview",
+            "https://drive.google.com/file/d/1JkrtJqdQSjetGpMQ9pjvxqsLqxQB_EX5/preview",
+            "https://drive.google.com/file/d/1XFS_UzjSh29IaxCV6jbSk290wx2eiIGI/preview",
+            "https://drive.google.com/file/d/1gAJnXx5zYXUWMqKBIJmD2UGe-NMhsdEI/preview",
+            "https://drive.google.com/file/d/1TBclQ8ezJHf7OI4b7zvSuCej0alfwr32/preview",
+            "https://drive.google.com/file/d/19dQOTTvwT2PtFjGdoHpeuE_neKxTCTWx/preview",
+            "https://drive.google.com/file/d/1UXlE3h5POi1u1PZNgHEQ69bewLkwcqjF/preview",
+            "https://drive.google.com/file/d/1WVt-mcsi9kK4vnn3_bVrV2OVdVujMI4f/preview",
+            "https://drive.google.com/file/d/1NQ2co5xQ3Ud91Sk6oP6agu_fQCJvMTwu/preview",
+            "https://drive.google.com/file/d/1KlX-LKlQCbcmXegLBU-ECicauc-obVqG/preview",
+            "https://drive.google.com/file/d/1XGbVENyFhhz13B5Y7kAhMnrijXJIvHqr/preview",
+            "https://drive.google.com/file/d/1tNMET5z5NMRwYf5ctQL5Dtjz5ckOwGvH/preview",
+            "https://drive.google.com/file/d/1Rq507mXSYkIaTNeb66Kf6weV3BUNl8ZV/preview",
+            "https://drive.google.com/file/d/13VFjoHMADVn5XG4qApK2_IufsgxlTlU3/preview",
+            "https://drive.google.com/file/d/11s1hpeSHPlboIN_UNhaI5JERkhKkBFH7/preview",
+            "https://drive.google.com/file/d/1sFMYWPMZfXHkAZpxklutlJ2ex2DxlSB5/preview",
+            "https://drive.google.com/file/d/1nOrLB8nsIWYsjopFcpJWK-_8O8gurG83/preview",
+            "https://drive.google.com/file/d/1e9GsN_zZlwBB5qYT7PLpTtk0RNFPm1xy/preview",
+            "https://drive.google.com/file/d/1OTfGEPTz22EyyjHYuuP92cLgyuVw3JEg/preview",
+            "https://drive.google.com/file/d/1-Dm500uXWP1yxCurli2upWfya5x5A-ID/preview",
+            "https://drive.google.com/file/d/1m9p5vkV_WcTHwgn_8U80j4yMdMabk8Yv/preview",
+            "https://drive.google.com/file/d/1iKOusntibybb7Bfo7LnmvViqijiflkVE/preview",
+            "https://drive.google.com/file/d/1FlgqXRL4BTghBZIbRNaXEjZqKcJJOrSP/preview",
+            "https://drive.google.com/file/d/1c6KhoNOoL6Gex8Xv_iqvuj0DIsBeZkZP/preview",
+            "https://drive.google.com/file/d/1CML98B_8zWN0OGqs9GLMMaZ53O75AGT-/preview",
+            "https://drive.google.com/file/d/1B1hWNlZSG6ePVGgbYLjLtns1zlv3EL1g/preview",
+            "https://drive.google.com/file/d/1vIYwnf46mxiJr17J45GTxF0zWnZZNSv3/preview",
+            "https://drive.google.com/file/d/1J3MZSOyRYqoJZMA__3Ggt-AHWQrKrcKo/preview",
+            "https://drive.google.com/file/d/1dYYuKoz_ENQtI0ucvOVkkThYjTRxqZ3G/preview",
+            "https://drive.google.com/file/d/1Auqx-z-V89DHclhXiyHZ8XVOm8rvrs-p/preview",
+            "https://drive.google.com/file/d/1tAOUkpxqq6yBbNRr70fQ2jD5GjRM_5av/preview",
+            "https://drive.google.com/file/d/19-a7LU3cRnj6z_2kveVe_XtI7xt4rZO7/preview",
+            "https://drive.google.com/file/d/1MS36ar-SiqiYq9gdGWIUCiw4yYXijFFi/preview",
+            "https://drive.google.com/file/d/1AzyNJbMrrHFkg9y_2gDIAf4U_00N373E/preview",
+            "https://drive.google.com/file/d/1e6JAoLYJsuc8v0uHYneInIF6sPf03IIb/preview",
+            "https://drive.google.com/file/d/1T2LYJoRytePLBuMvU80_FFavXkzr08OG/preview",
+            "https://drive.google.com/file/d/1wMnGkcMMZAZ9h4ormBIzvV97_0Q_jrDh/preview",
+            "https://drive.google.com/file/d/1GGqptpoB1XwFu7D3Gs1BE6-IosyHzfsp/preview",
+            "https://drive.google.com/file/d/1_MRJznrmEn9AqPikgtyIh_dRAdR_2fhy/preview",
+            "https://drive.google.com/file/d/1yU9Kd3-yusm6LrX4NRhLMAxHZRohdvSz/preview",
+            "https://drive.google.com/file/d/1oEBZr90JLbgAHo8rrsWAKnsYDFlhMC8c/preview",
+            "https://drive.google.com/file/d/1tfp1_H59UMlCerAnVR3-4qQcJggoFKGz/preview",
+            "https://drive.google.com/file/d/1upNaQapFzi8M88hRqa0xt-yAqPDqaV_s/preview",
+            "https://drive.google.com/file/d/1dnmmmzw75j8NjK1xmlm6fptf8A5FyiNq/preview",
+            "https://drive.google.com/file/d/12YdzGLCNhTbylo4uIOSGWuKT73DbDJZJ/preview",
+            "https://drive.google.com/file/d/1ZBfLV000qfWcF0zswkhJqTumxYb4b1ap/preview",
+            "https://drive.google.com/file/d/1sJNf3bjLzAO1QmHrXrq01CD8Pk9yDx8f/preview",
+            "https://drive.google.com/file/d/1T01k0YMvAaTK1DVYGFJjir7mFS0JK2d5/preview",
+            "https://drive.google.com/file/d/1glGnTPhNT26XxaAgqlx_JAPF15I9vi9v/preview",
+            "https://drive.google.com/file/d/1UBDwYS-2BGoDOdknYz5ezIyTR6J7WGwb/preview",
+            "https://drive.google.com/file/d/1dIt5My-NuwA0wJHamWq_kaau726wxY8F/preview",
+            "https://drive.google.com/file/d/1phGVTH0KG_GNALvOVz9oXt6ntEjoTEe8/preview",
+            "https://drive.google.com/file/d/1m8AMNqg59Ug6c85jgAV3zx5sT0R3yPMe/preview",
+            "https://drive.google.com/file/d/1LSCUheBHdKHbnJvy0XHGg4nKY4bFAm46/preview",
+            "https://drive.google.com/file/d/15pj79TlMJL0yakNbU3fgZghqYoT61xk-/preview",
+            "https://drive.google.com/file/d/1GQ_OEOW6TLE4QmzG7BWen-Sy1AplGPEk/preview",
+            "https://drive.google.com/file/d/1FuC-jq1xqoR3SkrdNZaFDwMk7Kc9MFwq/preview",
+            "https://drive.google.com/file/d/1mRJrHwLL8rKq0ABhfioNiPg1qiRMrcTU/preview",
+            "https://drive.google.com/file/d/14rIzozV5OHOJLsIQas1KXax7oYq8zwcA/preview",
+            "https://drive.google.com/file/d/1G01_XSfOcMTgIdke_1LdkJJrfbaFQ8cl/preview",
+            "https://drive.google.com/file/d/13kiqMe-dxIwP0OuW1wYpk3lvLOVVUwyD/preview",
+            "https://drive.google.com/file/d/1yI4cIA-L9bpMp0n7pjgmrjO5Bv8P1BZG/preview",
+            "https://drive.google.com/file/d/1pGEytMEFUTWkhVP7bnFlYKD_qgJLPxZJ/preview",
+            "https://drive.google.com/file/d/1BX1zYMZQL75NSr1lrpDO5S3P7yFcjn6-/preview",
+            "https://drive.google.com/file/d/1gGYRIKZ4LeL3xAD8A1n-6Pqqshsdu6-6/preview",
+            "https://drive.google.com/file/d/158aBlLzQNNiJ97-0yISjYmrV418C64dk/preview",
+            "https://drive.google.com/file/d/1L1cZa1GkyPzFuzX0eNIwYcAKThLIxkyI/preview",
+            "https://drive.google.com/file/d/1FOOPDpCzTxBE_NXcE6iS8yp6PlayeeTN/preview",
+            "https://drive.google.com/file/d/1496hS7zjjp4dY3MMaWuoa-Rupikmz2u3/preview",
+            "https://drive.google.com/file/d/1zs3Xf7Kpbj671fKwcwWMcVtBqs2nqUMN/preview",
+            "https://drive.google.com/file/d/111ZntUfnI_CyHRh_X8TfrMCqov-sxPbk/preview",
+            "https://drive.google.com/file/d/1I8yPfD8SoIorLZFd2UdZvjhUzrPfCJ2k/preview",
+            "https://drive.google.com/file/d/11qYoD5UOsL-uXN2XBaULviNM704Zvnh1/preview",
+            "https://drive.google.com/file/d/11ye7-IvR52TIc39eoix4JIWgx6ujlXPP/preview",
+            "https://drive.google.com/file/d/17RcV9eM6s9ArfufdOWGyA0cxu70XNxny/preview",
+            "https://drive.google.com/file/d/1V87CanX6rQatlId3lWOIV9TMEVGU9jAe/preview",
+            "https://drive.google.com/file/d/1KivfKD1FnF51jLShqtcG-d8xe61YAVS4/preview",
+            "https://drive.google.com/file/d/1E0nD-YiUeCHLzHl-u9rGrIrhDG3gImus/preview",
+            "https://drive.google.com/file/d/1aoe0YjM9Yoorq911Sq6ClK_DQC940_xV/preview",
+            "https://drive.google.com/file/d/1COHp9ubuJVWrHzF5gEshSj6pKxk7unpm/preview",
+            "https://drive.google.com/file/d/119VBBx9-z3aBi9sXgzD2BK3k35-auFnx/preview",
+            "https://drive.google.com/file/d/1ptfiN3O2e_tuwGRNMCjh9mDKLbm2Wxq7/preview",
+            "https://drive.google.com/file/d/1CBcgvYKQvb-zt-xgpIYwM1Tsm3Xw0dLq/preview",
+            "https://drive.google.com/file/d/1hWg5_CKnTk5zWMzQdOPd5eVQfM8mIQHS/preview",
+            "https://drive.google.com/file/d/1nX55j0TfpK8VP_pK4l9uEiNTATPUOn48/preview",
+            "https://drive.google.com/file/d/1nf-bjGRzCN8lLsyjm5QCL5xofqxF9R0A/preview",
+            "https://drive.google.com/file/d/1Tt7gbeOdnoWjbwGGWDVqOSapE-pja2S8/preview",
+            "https://drive.google.com/file/d/17mgLPZSNsSKvhtV7YODf4_IfDL4CHAKK/preview",
+            "https://drive.google.com/file/d/1Pi7RrBFyVjs3V9l3Q34ShK6tQJ769Rr2/preview",
+            "https://drive.google.com/file/d/111cNgPEzCCENJ7d-5N1sHNgFdSpw7UFM/preview",
+            "https://drive.google.com/file/d/1qeDDdmT3y5b7nuE-c2Wt43bzd4Kcmmzi/preview",
+            "https://drive.google.com/file/d/1QX_peetfCTIkFAyH4pxQoC3id9wWJ3L9/preview",
+            "https://drive.google.com/file/d/15OZ16TFc0KzFCU5fPw7ynG9iVb1dOAeZ/preview",
+            "https://drive.google.com/file/d/1Bsgg1eMFOtmyzg5dMxGGebFrwjNLhuUD/preview",
+            "https://drive.google.com/file/d/1hVESfToIla1y2ePGy2yE7Bf2SnilGuKG/preview",
+            "https://drive.google.com/file/d/1tUTcRX48s6HGcJEKLPJClOI2S74WjFwD/preview",
+            "https://drive.google.com/file/d/1njuB9A7za3Qe4BZaJ8uJkUlK9sRWGcsq/preview",
+            "https://drive.google.com/file/d/1caTH8MqHfpS7kJtKzbuwF9Sw9eXRRwSu/preview",
+            "https://drive.google.com/file/d/11scaxktVpaOKLFcVYX6OGoWx0uS84mI3/preview",
+            "https://drive.google.com/file/d/1gmUW7sXIU8ipcG4Zb03L2NMPQGl1T5CK/preview",
+            "https://drive.google.com/file/d/1jZNKz_3Co7a8VKOKP_L4JC7ObcfTX1Ti/preview",
+            "https://drive.google.com/file/d/1248Fy1SkqiJXW3D2X4pynv5PCLW7WfHv/preview",
+            "https://drive.google.com/file/d/1ywJEJlQhTEcB_YpPUA-oWUEvXtDfEcqt/preview",
+            "https://drive.google.com/file/d/1urOgYQhR05t46PZcuRwYzT84kWsGklQt/preview",
+            "https://drive.google.com/file/d/1Tl1Z0TvudagRtuwg1SJc9Lj5wdlkwW8b/preview",
+            "https://drive.google.com/file/d/1NLGVTILBBSr5qKIy74MX2Hc4r_5Sw6SY/preview",
+            "https://drive.google.com/file/d/1xk6R1XljvPxHi7wIoKId9x2K-zddQnqj/preview",
+            "https://drive.google.com/file/d/1lNj1BdjhBgJHF8vAxhS2Fij50ts5HHx1/preview",
+            "https://drive.google.com/file/d/16LcGkEfs2BsXbkZiI6tznKSb0h-GgrIu/preview",
+            "https://drive.google.com/file/d/1UxaXvpRPgAksbvFK0A4iH2MMa8VxEzPy/preview",
+            "https://drive.google.com/file/d/1lk1gb4yJKE6TxzEQz_47ZuSSxcB7iwxT/preview",
+            "https://drive.google.com/file/d/1ChZqKlOrmnDSHs_yoO_Z75idlbYChSMx/preview",
+            "https://drive.google.com/file/d/12vjEcTnXV6qXqWI7-FRlRwJO7TQNVtU_/preview",
+            "https://drive.google.com/file/d/1OhiFP1_WtVUQLuxfNjsZNSeYaboOKU8R/preview",
+            "https://drive.google.com/file/d/1Nk9fg1hF8yrUF0MmxX5_WoPMBpo04OK8/preview",
+            "https://drive.google.com/file/d/16O1TU9-vr75spJ5XDxmGFED_ZFhJ8w44/preview",
+            "https://drive.google.com/file/d/1soNArCO_cnobRSIDFDuMU_4zuWmnOiBH/preview",
+            "https://drive.google.com/file/d/15fpTgmh81lrgp7JVL39ulKFVJFHY3YeR/preview",
+            "https://drive.google.com/file/d/1q7sjKr1Urz2SEk1eqjtL-GyOd0CYhIBU/preview",
+            "https://drive.google.com/file/d/1mHQugHbIrd7AD9EIbLLIwZx_X021iFTa/preview",
+            "https://drive.google.com/file/d/1DRQsKF5h7r-NdroDtnQqxOF0LnCWmgJZ/preview",
+            "https://drive.google.com/file/d/1IX-ZygYFRUNWi49MOrlifKFRsrJyk-Oc/preview",
+            "https://drive.google.com/file/d/1pUnY1rlQIAUWeyojyv5ff5Gn3f4WJezh/preview",
+            "https://drive.google.com/file/d/1-RKJhE6mU2LZoZDFagxKQWTLoXgJV0n-/preview",
+            "https://drive.google.com/file/d/1ixqouSbxGVB5T_QoRI4K5VM-KkX09bTF/preview",
+            "https://drive.google.com/file/d/1X9nHezv1j4QedSf1cKYCMtYAUmxQMX6Z/preview",
+            "https://drive.google.com/file/d/1cJ8e_muq5zYf7z6gKyMIpFuze2ZFDu_E/preview",
+            "https://drive.google.com/file/d/15-BKdVcsWccwgTE2MgyMkaiH54ftd4lT/preview",
+            "https://drive.google.com/file/d/1IrHFD-B5IbWl203Oe1I7MsEdpHSY6Xmk/preview",
+            "https://drive.google.com/file/d/101tXEG43iIkHzaNg-JHETcCy9HF3avIA/preview",
+            "https://drive.google.com/file/d/1tF3iXc6JL94sFtle5-M384jvPnITyCbD/preview",
+            "https://drive.google.com/file/d/1bFLL1yliadXuIn7yQGsBILS2ih2Brwto/preview",
+            "https://drive.google.com/file/d/1ijRcfFaoMr1M8NVezWIDNHkAXSee7Or-/preview",
+            "https://drive.google.com/file/d/112e2cDmo4fV5rZCkAtKJ93anE2YbzYMT/preview",
+            "https://drive.google.com/file/d/1AQvTjpTaB7jM9aEeJcd29rcDVbSefcjd/preview",
+            "https://drive.google.com/file/d/1JFpi1XSDnJnCbayaIuG5PcJSGYV-RPV0/preview",
+            "https://drive.google.com/file/d/1o1ieMz1MxdUz60LFfKeuTa8NF6YF7qlQ/preview",
+            "https://drive.google.com/file/d/1x2AFvccY9jmzxrf-KVX4Kor1FrvPzxNQ/preview",
+            "https://drive.google.com/file/d/1CKvVde1kqGCGhC282Gj3pY6UJDtDQrLr/preview",
+            "https://drive.google.com/file/d/1Lq9rYG_pfrtxgSTayeh1JPgJ3Wn28u2h/preview",
+            "https://drive.google.com/file/d/1T1O0yEL52v_0J-TKep2SRzzaaJ-yEZjC/preview",
+            "https://drive.google.com/file/d/1YaKd0jq0Ig02OTldmKODQiM01TAM_FS7/preview",
+            "https://drive.google.com/file/d/1NuhG16TYBhs6kzf81vKJk5xyqRzRmG_0/preview",
+            "https://drive.google.com/file/d/1TLKAdAyjFEL0h7yKrtv9J_-Y3PZW0v_s/preview",
+            "https://drive.google.com/file/d/1QX7sMPa5YJ8yMTLRstmMPs_5eG7tWXsg/preview",
+            "https://drive.google.com/file/d/1dxmuZFylG9SfKwSgc7MiC_KnsWbNFHVI/preview",
+            "https://drive.google.com/file/d/103kMxTpLzPiDMcIjYmVItsqjtot93F6S/preview",
+            "https://drive.google.com/file/d/1LR88DjmmN8xYbp6Z54-d0DJibDHP2g9X/preview",
+            "https://drive.google.com/file/d/12SD-Cx-MkZA359z244owiagoRkuXXhAP/preview",
+            "https://drive.google.com/file/d/1AIbe1rVDxNDclMEZJvpAPgRyS6cA8Wc2/preview",
+            "https://drive.google.com/file/d/1NOBge4chP4gZPXQZTohsSSC4a1V3cGEl/preview",
+            "https://drive.google.com/file/d/1kcL7to4zxsy2ixKngHJ_8qoGL1NV2HCx/preview",
+            "https://drive.google.com/file/d/143dmWIX0-YiTm0jdaAibm6xMZxHW9j9D/preview",
+            "https://drive.google.com/file/d/1PtFNRXcErPDHOE9Im5FJXJFUbZyXQ1pp/preview",
+            "https://drive.google.com/file/d/1mCdTuet1twOCKlY-X3f1bkn7wCxeAOZE/preview",
+            "https://drive.google.com/file/d/1J0PoRTGa9WCniC2JnpXkAJd-1tEDFfuh/preview",
+            "https://drive.google.com/file/d/1B5fz9NQi2LqGr7CdYbVGwEnzB-sRDlS2/preview",
+            "https://drive.google.com/file/d/1T_oVMNxIPHwqw5AnzsH_f76z5K5MODd0/preview",
+            "https://drive.google.com/file/d/1L3UAKCJKkNyFwramjksa6Rd2warABxdg/preview",
+            "https://drive.google.com/file/d/12RvopUvHVl2qP8Kz8PqedLOGAfjs_KYC/preview",
+            "https://drive.google.com/file/d/1FdGuQtcAVATe91vmPR0vKtGY0VH6rilp/preview",
+            "https://drive.google.com/file/d/1ZLEgC7dvCmkSOMrd8qd9UJAWaK2Q3Rw1/preview",
+            "https://drive.google.com/file/d/1FuyFXGoPx7hq9o0kei7NypTfEkgL1Des/preview",
+            "https://drive.google.com/file/d/1FGb_nUW1_TRYGpgZW8OYdmuZIHSRNF08/preview",
+            "https://drive.google.com/file/d/1Am6TAmizA6Cy9eJHShHD5FiE7ZlR5hyA/preview",
+            "https://drive.google.com/file/d/10L4s6T3cwLSFOPqRYmnn3G0wswieoAtv/preview",
+            "https://drive.google.com/file/d/1ezMD97nbnnDcRmbrbcbXbqyPf_vVnGYI/preview",
+            "https://drive.google.com/file/d/1gIyPjJ3XYM7nP5jX0z3cZv8GXguAfYQ9/preview",
+            "https://drive.google.com/file/d/1XTWmcOQ73_K6-KZ6RQx9EeaehvPE19cC/preview",
+            "https://drive.google.com/file/d/1xjQlR0NJ8zpHn5ksM3xUifvIzs13fvyU/preview",
+            "https://drive.google.com/file/d/1FJR9tq_fTnUd732rHBQhVNKXm3ZDeCpy/preview",
+            "https://drive.google.com/file/d/11dGdJsPSZ786bjFrwsTZ2I3SZTNHabP-/preview",
+            "https://drive.google.com/file/d/10S92ousZ4njOTCbqbKNlRy53W2CcgI7h/preview",
+            "https://drive.google.com/file/d/1Tf8vaVAft8TfWcJNwb14lt7cldUMaduq/preview",
+            "https://drive.google.com/file/d/1bxt7Ln2aY-nsVWqbD3i9VlaRc49ls9Kb/preview",
+            "https://drive.google.com/file/d/1Viy8R24a0giJ4kLew8z8S0GCfWsC698y/preview",
+            "https://drive.google.com/file/d/1RnVND3PraHCrr-zt75E0hqSzDNa4jJPn/preview",
+            "https://drive.google.com/file/d/1LjsYMcIdogjGxV49dps3wbbjniO-XuS7/preview",
+            "https://drive.google.com/file/d/1PcibdLClzWIaqkZVgcXCy4qDs1HzcVFz/preview",
+            "https://drive.google.com/file/d/1FmwyuC766-BOGzRv24qHWTOxgr-I1ikM/preview",
+            "https://drive.google.com/file/d/1-P4N95twp1BQcyzp3Gp834gXg7O9jFVX/preview",
+            "https://drive.google.com/file/d/1RstKOhzr2MlkjvWNiAl9yeSb0TShfhHo/preview",
+            "https://drive.google.com/file/d/1b1zEoDu9bD7cJFZv5YpwIeEg2cCHVB_H/preview",
+            "https://drive.google.com/file/d/189NP_EDyj3_oXo5CyWtGJT3QNbQaa5Cq/preview",
+            "https://drive.google.com/file/d/1ig-Fap8wiECkmIaPsllvKcuDAPcDmHsc/preview",
+            "https://drive.google.com/file/d/1kGZeWhTawf4GkKkzN-NrlyV43VBvMgX-/preview",
+            "https://drive.google.com/file/d/1ZTyoZn_6XEkxeTUkcBvzRNRd3XizqY3w/preview",
+            "https://drive.google.com/file/d/1rGtY8n1vbSqoEuGT0IXtwH0Hd8HKV1lc/preview",
+            "https://drive.google.com/file/d/1PTcH8Ky5Q4Nj4x7jo6RUztWzqhKrO23p/preview",
+            "https://drive.google.com/file/d/1u4aE4VhW2cRuCzIQ9qptAlSz26W85QAk/preview",
+            "https://drive.google.com/file/d/12tiyl59gATfcia64griNMaYCjwkteA4j/preview",
+            "https://drive.google.com/file/d/1J5Znicf0pbWoECGbUnaPR7Ybia5aYTBU/preview",
+            "https://drive.google.com/file/d/1Df_IXqyLrFNxtBIc5rzDCkFgNdbk-v--/preview",
+            "https://drive.google.com/file/d/1bkFTU_NlL8fZN2jKrwuUQ1drL_Z_j6Qi/preview",
+            "https://drive.google.com/file/d/1mNxON56cq_dcRABhw316j3xTR5ICRgjq/preview",
+            "https://drive.google.com/file/d/1A0-dQSyT8xc_rB42_Zo-htTkNXWsaVwz/preview",
+            "https://drive.google.com/file/d/1_42E0EuLl4NLR8iEWS4dj7ej9n4jgNej/preview",
+            "https://drive.google.com/file/d/1qu1rsWXxx44RSxT-_dBIuehjfUTezI9-/preview",
+            "https://drive.google.com/file/d/1P54HnJ43jqjXe-LcrqluI_-s_1lyJIRe/preview",
+            "https://drive.google.com/file/d/1sd0GTQo47_9U3GVWqu7duLrJmElbfXgS/preview",
+            "https://drive.google.com/file/d/1m2M9G0va-uoMntk3082Aj4hDGHmrp1a1/preview",
+            "https://drive.google.com/file/d/1rBFm66IF6WqHV-27ZtVTXvbks9Iaaev-/preview",
+            "https://drive.google.com/file/d/1Kc-xva9wnO5uwM7iC1JR8o_xzvUU9iYC/preview",
+            "https://drive.google.com/file/d/1bSFi7GWWUVVX4pKzhQ0HqAclEE6x0Oou/preview",
+            "https://drive.google.com/file/d/1rVQ13z3V2sW2uQSmGR_8MpxpZasN9S3s/preview",
+            "https://drive.google.com/file/d/1boMSoSS4XmpWPgMXPsDahEmpMKMHdhHo/preview",
+            "https://drive.google.com/file/d/1sDN6VgAh5LHmoSeWoKiFVRYU1hG0a_yr/preview",
+            "https://drive.google.com/file/d/1nJOwoZn5Zh5Orw-GDn4TwyxgUmIbbLQF/preview",
+            "https://drive.google.com/file/d/1Yp5F7FZFZRj6X9X5BBF_fqxT3GtIvL0Z/preview",
+            "https://drive.google.com/file/d/18mtM6LnRO2mVT97EBwXsL3uSTI9uxefU/preview",
+            "https://drive.google.com/file/d/138W-DShkENvTFc8jWAfpTghCqfC8LNau/preview",
+            "https://drive.google.com/file/d/1vqGqWDx1jA85tfk8XITPhf6oiLBqhCsV/preview",
+            "https://drive.google.com/file/d/1fPFikQsdM0FLZtDsPgKJ8BoLGjuWG4tw/preview",
+            "https://drive.google.com/file/d/1bAsIKWul-_QRZ9_5o1d6IQWEt_SjmlGm/preview",
+            "https://drive.google.com/file/d/1fRVMYQuGG07dfX_O2LI_GqcS7kmvUlBG/preview",
+            "https://drive.google.com/file/d/1hqXgfscSgXUefSbGKyySB18Hq-HWm_zM/preview",
+            "https://drive.google.com/file/d/1RHH4TPLSgGQ7I0VN9OX1jFjTp_-uK71m/preview",
+            "https://drive.google.com/file/d/1EYCPP872lR0DuP-XDwbsxOLemG0GqtE9/preview",
+            "https://drive.google.com/file/d/1yRFX13uV_nV4Iti0k3A2G2EbyC573CUC/preview",
+            "https://drive.google.com/file/d/1D0Y_E-P3EP8FCp3ubL8aAu19a-CJ08Bc/preview",
+            "https://drive.google.com/file/d/1Tyc3JLbqaw6-ll5SCpvEg9kQREAH1moA/preview",
+            "https://drive.google.com/file/d/1-LxLV8C5p2ookaa0T6Tk8AtZjZh-3PlP/preview",
+            "https://drive.google.com/file/d/1UxGDGUdmYmlkUJZuSK8SWDKOxvqIkGpI/preview",
+            "https://drive.google.com/file/d/1oVla5mRbRtLCjnNKcr7B8e47ut-wNKZU/preview",
+            "https://drive.google.com/file/d/1AFdJ6KFc9hzrc8ndCtgRRxyKkvj6tF6I/preview",
+            "https://drive.google.com/file/d/1XaLDjJgB1wQzkChuH7p3SCMV5dTmGwZI/preview",
+            "https://drive.google.com/file/d/1v5gRXGe4COCf_pD4CFCpq6HP21w-LOfc/preview",
+            "https://drive.google.com/file/d/1HWolg-JSnB4Scd10ve9oIbycNevc9ohC/preview",
+            "https://drive.google.com/file/d/1BZqeGpRAKOBQxkTgfgYZU2rNCDDJgoIu/preview",
+            "https://drive.google.com/file/d/1CcSdqB21IwTemH4V6S7fAkREyi5yas1s/preview",
+            "https://drive.google.com/file/d/1JAS4ZVveQD3kEn2C4xABsJw88q1WnRk-/preview",
+            "https://drive.google.com/file/d/16r_6Vm931Y3zxxPBWFgDOtkFGVpnsSAj/preview",
+            "https://drive.google.com/file/d/1cFQwd0_V3A5hXxyZrUlb-ackiFGd0F4R/preview",
+            "https://drive.google.com/file/d/18ORC_qVxvK6HeiZF2DiBlUoduJM0Ofrw/preview",
+            "https://drive.google.com/file/d/1U-J46x3qmpbPxrOeUgRONrqmWxWihm8C/preview",
+            "https://drive.google.com/file/d/1Pr7AOxCr53qgGXxxhK-byw1Zet_S9wOH/preview",
+            "https://drive.google.com/file/d/17dseJHGpjW-plsYhYQ5o9Ep2_oEnSvC1/preview",
+            "https://drive.google.com/file/d/15c3fuoK7e4_--cEAI6ggtX54EXaRx9GC/preview",
+            "https://drive.google.com/file/d/1HiLYFHEw3lGQeIIHb2_YMO5gy-ENFyU2/preview",
+            "https://drive.google.com/file/d/19Zpcn5wVqBNZACzbIv1nTnZ4P8njl30V/preview",
+            "https://drive.google.com/file/d/1qZTmzAPpfL_tZX-tAy2WoQhdl5l8hcG0/preview",
+            "https://drive.google.com/file/d/1m7ZsJkHH5L48xdrPuprJr-F3TUGTlvgD/preview",
+            "https://drive.google.com/file/d/11Ekjw9NQWrZo6UOrLbdXnvbMHtp0JEg6/preview",
+            "https://drive.google.com/file/d/1yqFf4ydV77OZ7fjCjf6ekzEF8a6RgHhE/preview",
+            "https://drive.google.com/file/d/1bejrUH3KWVf-n_6K5p-ebYy2wA95JE_o/preview",
+            "https://drive.google.com/file/d/1cW7KdP5zp_GfdlHNxCtFvNbXCVP5PPP-/preview",
+            "https://drive.google.com/file/d/1-1cXJWxJRo46zFLS3PgJYJJCgdHrdgqq/preview",
+            "https://drive.google.com/file/d/1N4G5jcCM0S5EdHF5kySuEFibEQaRrmce/preview",
+            "https://drive.google.com/file/d/1K-szrtKidhyaU-6uKdkpbijDnWPU5o3A/preview",
+            "https://drive.google.com/file/d/1GNKXZjazK60kNW3IMWVx_k0h8En2zlFI/preview",
+            "https://drive.google.com/file/d/10DjHOpQdGgvB083Q9GNVW5fkKvJavnLl/preview",
+            "https://drive.google.com/file/d/1SLW3afSJUZMiUrSzCiW-4BvOY7GrIJMG/preview",
+            "https://drive.google.com/file/d/1a-Hy_v0HPfqcrrTgiDDMv4WvGzN0LQ46/preview",
+            "https://drive.google.com/file/d/1dy8s41f5w1gvcDlQYDwWQeTYLGWKnFRf/preview",
+            "https://drive.google.com/file/d/12CMVgbya9f0yzl2Ayi1svsfTr3IXVXHX/preview",
+            "https://drive.google.com/file/d/1PUCuU1u-Z_CLeZXdWUshLMQqg3UGv72v/preview",
+            "https://drive.google.com/file/d/1Z4sFPOiRiH7aB1Nfxzz1QxqGAxEmj2yq/preview",
+            "https://drive.google.com/file/d/15yF4q-bSew81K8YvtA_kjBeEjat9ZNMW/preview",
+            "https://drive.google.com/file/d/1zisXGvqlL_-z_hm0BzrWVyqCmlcENZBs/preview",
+            "https://drive.google.com/file/d/1qW0IuqsbzJdxXgEnRjpeCXoXJbW0BqvO/preview",
+            "https://drive.google.com/file/d/1ry33q_GIDWetQ40Ixur4Rga1bS4oKdf-/preview",
+            "https://drive.google.com/file/d/1Xf6ETVTdjw2T-XsVLJnIhtMW4bITAaba/preview",
+            "https://drive.google.com/file/d/1vrVy_0drEmXqq47lmD1BmKvtvvcJ_zKy/preview",
+            "https://drive.google.com/file/d/1U99y3kE-0J31V_SfC_EA0TFZIAFXG4pq/preview",
+            "https://drive.google.com/file/d/1xsXAWUULGxo2sVGh40ltKbXrT0Nw0P-Y/preview",
+            "https://drive.google.com/file/d/1aF0tyhoL6vwD20BrL06gPLbUadS0Oy9W/preview",
+            "https://drive.google.com/file/d/1QrLJxxtL8tFMuQBvKEVp9idl6tQWCcX_/preview",
+            "https://drive.google.com/file/d/1h1r6vH5x7dTdFHxGMWSlmiyCLip_F4Vf/preview",
+            "https://drive.google.com/file/d/16dF_e09SGuWqk-9rcdtPr25HZOIcuwSP/preview",
+            "https://drive.google.com/file/d/1RP1foqeu3RlCrsN_iPnP13YsKD3HWkJv/preview",
+            "https://drive.google.com/file/d/1txS8wE4QDKLJOQui4ABTiumyTk8KhhGi/preview",
+            "https://drive.google.com/file/d/1JBgVdjbiVeJwDhNbVqkozflISloAKQp4/preview",
+            "https://drive.google.com/file/d/1ojTWWV7PXD0WoNe3yUxq9OYdi4xmgJmi/preview",
+            "https://drive.google.com/file/d/19lsx0LXU6VMWCjg5hnJIKFaZ6GJ5bgCw/preview",
+            "https://drive.google.com/file/d/1eWEIhUTenMU6z149gV_HgxGBI5KacV6S/preview",
+            "https://drive.google.com/file/d/1zz7rp7tpKj30eOo_B4INmiuNj9GPwxnB/preview",
+            "https://drive.google.com/file/d/1Q2Qww2YHNkYOP48bMcmZFuiv2GZsFxH4/preview",
+            "https://drive.google.com/file/d/1dmaMVflfycyvJ2CpwlRp18W0Wnd0s1_k/preview",
+            "https://drive.google.com/file/d/1WuNcOXslx-RbXR-g7QJkBh6Rm9sqQrIH/preview",
+            "https://drive.google.com/file/d/1mRL6HjdT-s3uvD1YXpFBtHRA-ew0qr4S/preview",
+            "https://drive.google.com/file/d/1nDs0urPo2vJ1Bygzq857GjFEW5Y_UtMV/preview",
+            "https://drive.google.com/file/d/1k2FxTMvdHz6_Qk9xRgzgaXkRamxzc1Xr/preview",
+            "https://drive.google.com/file/d/1dEObJsYfDtFpY-K4c-b7-zr92253vw6x/preview",
+            "https://drive.google.com/file/d/1XlrWXL8ClfDYnKsZ-DkIHzEtOkuws9dq/preview",
+            "https://drive.google.com/file/d/10XtfX_8H_lwvLatYzGJSzjA1Kulc-PE9/preview",
+            "https://drive.google.com/file/d/1e3AGCIYxssKqRXj2CV3WXPTvKBBPWIMm/preview",
+            "https://drive.google.com/file/d/1ztCAW__HXAaph2_KyiozO6hxFTwl4COO/preview",
+            "https://drive.google.com/file/d/1Rwj75Ndt2FC5P4SDTaHuwq5iRbqrjST2/preview",
+            "https://drive.google.com/file/d/1WoinwfbjOI-Fv1s5acpfYbXKxYU78Ot5/preview",
+            "https://drive.google.com/file/d/1-clLxvX8Hw1B10ZFHPh7rLNNGLd0TSZ4/preview",
+            "https://drive.google.com/file/d/1EbjC48dh4sGLMzMh9gIZQ3wvtaigIXJy/preview",
+            "https://drive.google.com/file/d/1rmS9j-VyC5zZLIPp0ZcbQ0Lrmsn_sJMe/preview",
+            "https://drive.google.com/file/d/1YyeGdVZDz8CqqQWR-Ms9A_UOPEWQF7v7/preview",
+            "https://drive.google.com/file/d/1nC5HykEpCd_rJBGyAYsgaPdrVnCYYPwS/preview",
+            "https://drive.google.com/file/d/1dFgEa45XiYh2ELlbxCGCI9d5FoxYZRZc/preview",
+            "https://drive.google.com/file/d/15NiK9nghdEsSH7XAt6VhfkJTQzYDGzTh/preview",
+            "https://drive.google.com/file/d/14LlJIt1L3bP1Rg_IJXTbPVOXVmB1vloz/preview",
+            "https://drive.google.com/file/d/18xq1UCIzNXXfWbUVfFtVzPpGQhbaCcav/preview",
+            "https://drive.google.com/file/d/17yXbyrzGx67cfzEq7xWZoRpKtY_plHcQ/preview",
+            "https://drive.google.com/file/d/1rBq_1Q-GHmiGjc7vlQw0C_lSbwuMWpc5/preview",
+            "https://drive.google.com/file/d/1KNxFrc34zWc-Y2kGWeUGaKRxhLWR4yFO/preview",
+            "https://drive.google.com/file/d/1UYOYVsVb2Onx-u1jdJ_egP44bCbuq_Fy/preview",
+            "https://drive.google.com/file/d/1ZKJHmCttl-IrSgx0J2gxynszUI6KREFO/preview",
+            "https://drive.google.com/file/d/10SbdWql3gptbqCwG6rfSnz2Ms1KmNAzc/preview",
+            "https://drive.google.com/file/d/1NKqKYIrrdA8_RvNl41vPngO2f9CxFw20/preview",
+            "https://drive.google.com/file/d/170TbsKSOO_dQV8hQeCTvCixUNBq9dX0_/preview",
+
+        ];
+       let currentIndex = 0;
+const mainFrame = document.getElementById('mainFrame');
+const thumbsList = document.getElementById('thumbsList');
+const batchSize = 15; // thumbnails batch
+let loadedCount = 0;
+
+function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    mainFrame.src = images[currentIndex];
+
+    document.querySelectorAll('.thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === currentIndex);
+    });
+
+    document.querySelectorAll('.list-item').forEach((item, i) => {
+        item.classList.toggle('active', i === currentIndex);
+    });
+
+    const activeThumb = document.querySelector('.thumb.active');
+    if (activeThumb) {
+        activeThumb.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+    }
+}
+
+function loadMoreThumbs() {
+    const end = Math.min(loadedCount + batchSize, images.length);
+
+    for (let i = loadedCount; i < end; i++) {
+
+        // ===== THUMBNAILS =====
+        const t = document.createElement('div');
+        t.className = 'thumb';
+        if (i === 0) t.classList.add('active');
+
+        const iframe = document.createElement('iframe');
+        iframe.src = images[i];
+
+        t.appendChild(iframe);
+        t.addEventListener('click', () => showImage(i));
+        thumbsList.appendChild(t);
+
+        // ===== LIST VIEW (ONLY FIRST 15) =====
+        if (i < 15) {
+            const listItem = document.createElement('div');
+            listItem.className = 'list-item';
+
+            if (i === currentIndex) listItem.classList.add('active');
+
+            const listIframe = document.createElement('iframe');
+            listIframe.src = images[i];
+
+            listItem.appendChild(listIframe);
+
+            listItem.addEventListener('click', () => {
+                showImage(i);
+                window.scrollTo({
+                    top: document.querySelector('.viewer').offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+
+            document.getElementById('listViewContainer').appendChild(listItem);
+        }
+    }
+
+    loadedCount = end;
+}
+
+// ===== INFINITE SCROLL =====
+const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && loadedCount < images.length) {
+        loadMoreThumbs();
+    }
+}, { rootMargin: "200px" });
+
+obs.observe(document.getElementById('listSentinel'));
+
+// ===== NAVIGATION =====
+document.getElementById('prevBtn').onclick = () => showImage(currentIndex - 1);
+document.getElementById('nextBtn').onclick = () => showImage(currentIndex + 1);
+
+// ===== THUMB SCROLL LOAD =====
+thumbsList.addEventListener('scroll', () => {
+    if (thumbsList.scrollLeft + thumbsList.clientWidth >= thumbsList.scrollWidth - 10) {
+        loadMoreThumbs();
+    }
+});
+
+// ===== INITIAL LOAD =====
+loadMoreThumbs();
+showImage(0);
+
+
+// ===== NAVBAR MENU =====
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+const sideMenu = document.getElementById('sideMenu');
+const closeMenu = document.getElementById('closeMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function openNav() {
+    sideMenu.classList.add('active');
+    menuOverlay.classList.add('active');
+}
+
+function closeNav() {
+    sideMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+}
+
+hamburgerMenu.addEventListener('click', openNav);
+closeMenu.addEventListener('click', closeNav);
+menuOverlay.addEventListener('click', closeNav);
+    </script>
+</body>
+
+</html>
