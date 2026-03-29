@@ -361,7 +361,7 @@
         <div class="thumbs" id="thumbsList"></div>
 
         <div class="list-view-wrap">
-            <div class="list-view-title">First 15 Photos View</div>
+            <div class="list-view-title"> First 10 Preview</div>
             <div class="list-view-container" id="listViewContainer"></div>
             <div class="list-sentinel" id="listSentinel"></div>
         </div>
@@ -1121,7 +1121,7 @@ function loadMoreThumbs() {
         thumbsList.appendChild(t);
 
         // ===== LIST VIEW (ONLY FIRST 15) =====
-        if (i < 15) {
+        if (i < 10) {
             const listItem = document.createElement('div');
             listItem.className = 'list-item';
 
