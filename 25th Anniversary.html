@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="robots" content="noimageindex">
+  <title>25th Anniversary Memories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=NTR&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ab2154;
+      --primary-hover: #8e1843;
+      --accent-gold: #e0a96d;
+      --accent-amber: #c86d8a;
+      --bg-card: #fff0f3;
+      --text-dark: #5c1e33;
+      --border-gold: #ffb3c1;
+      --menu-btn-bg: #f7d6e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(160deg, #fff0f3, #ffe6ea 60%, #f7d6e0);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px 10px 40px;
+      color: var(--text-dark);
+    }
+
+    .phone-container {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 32px;
+      padding: 14px;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 30px 20px 60px;
+      }
+
+      .phone-container {
+        max-width: 720px;
+        padding: 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .phone-container {
+        max-width: 860px;
+        padding: 28px;
+      }
+    }
+
+    /* Modern Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 179, 193, 0.5);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar .brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Hamburger menu button on the LEFT */
+    .hamburger-btn {
+      background: var(--menu-btn-bg);
+      border: 1.5px solid var(--border-gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+      padding: 0;
+    }
+
+    .hamburger-btn:hover {
+      background: var(--border-gold);
+      transform: scale(1.05);
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Left Slide-out Navigation Drawer */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(20, 10, 15, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 290px;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: 8px 0 30px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .nav-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-drawer {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .close-drawer:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .drawer-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 10px 8px 4px;
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .drawer-item:hover {
+      background: var(--bg-card);
+      border-color: var(--border-gold);
+      transform: translateX(4px);
+    }
+
+    .drawer-item.active {
+      background: rgba(171, 33, 84, 0.08);
+      color: var(--primary);
+      font-weight: 600;
+      border-color: var(--border-gold);
+    }
+
+    .drawer-item .icon {
+      font-size: 18px;
+    }
+
+    .drawer-item .text-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer-item .text-content small {
+      font-size: 11px;
+      color: #777;
+      font-weight: 400;
+    }
+
+    .drawer-divider {
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 6px 0;
+    }
+
+    /* Header without flower divider */
+    header {
+      padding: 26px 8px 18px;
+      text-align: center;
+    }
+
+    /* Minimalist sleek divider replacement */
+    .clean-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+
+
+    /* Grid style gallery structure */
+    .gallery-section-title {
+      font-family: 'NTR', 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      color: var(--primary);
+      margin: 20px 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .photo-count-badge {
+      font-size: 12px;
+      font-family: 'Outfit', sans-serif;
+      background: var(--primary);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 10px;
+    }
+
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--bg-card);
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .grid-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .big-photo {
+      grid-row: span 2;
+      height: 260px;
+    }
+
+    .small-photo {
+      height: 125px;
+    }
+
+    .row-two {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .row-two .grid-item {
+      height: 170px;
+    }
+
+    .row-three {
+      grid-column: span 2;
+      margin-top: 10px;
+    }
+
+    .row-three .grid-item {
+      width: 100%;
+      height: 160px;
+    }
+
+    /* Video Section */
+    .video-section {
+      margin-top: 28px;
+    }
+
+    .video-section h2 {
+      font-family: 'NTR', 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2.5px solid var(--accent-gold);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* More photos grid section */
+    .more-photos {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 540px) {
+      .more-photos {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .more-photos {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .more-photos .grid-item {
+      height: 140px;
+    }
+
+    .loading-sentinel {
+      text-align: center;
+      padding: 20px;
+      color: var(--accent-amber);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    /* Drive button */
+    .drive-btn-wrap {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .drive-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 30px;
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      transition: all 0.25s ease;
+    }
+
+    .drive-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-header {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-size: 14px;
+      padding: 4px 8px;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mode-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .mode-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .close-lightbox {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-body {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .lb-nav:hover {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    .lb-nav.prev {
+      left: 10px;
+    }
+
+    .lb-nav.next {
+      right: 10px;
+    }
+
+    .lightbox-footer {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 13px;
+      text-align: center;
+      padding-bottom: 8px;
+    }
+
+    .lightbox-footer a {
+      color: var(--accent-gold);
+      text-decoration: underline;
+    }
+
+    /* Credit */
+    .credit {
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--accent-amber);
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Left Navigation Drawer & Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>✨ Menu</span>
+      </div>
+      <button class="close-drawer" onclick="toggleDrawer()">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <span class="drawer-section-label">Events & Galleries</span>
+      <a href="./index.html" class="drawer-item">
+        <span class="icon">🏠</span>
+        <div class="text-content">
+          <span>Gruhapravesham</span>
+          <small>1 Year Housewarming Memories</small>
+        </div>
+      </a>
+      <a href="/25th Anniversary.html" class="drawer-item active">
+        <span class="icon">🪷</span>
+        <div class="text-content">
+          <span>25th Anniversary</span>
+          <small>Silver Jubilee Celebration</small>
+        </div>
+      </a>
+
+      <div class="drawer-divider"></div>
+
+      <div class="drawer-divider"></div>
+      <span class="drawer-section-label">Full Cloud Storage</span>
+      <a href="https://drive.google.com/drive/folders/1faTso9SnCLdumrFb5DcIts81CaziV0L5?usp=drive_link" target="_blank"
+        class="drawer-item">
+        <span class="icon">📂</span>
+        <div class="text-content">
+          <span>గృహప్రవేశం Photos</span>
+          <small>Google Drive Folder ↗</small>
+        </div>
+      </a>
+      <a href="https://drive.google.com/drive/folders/1OxKiIUKj1D0gcYhlHUVI-kz64plGqigg?usp=drive_link" target="_blank"
+        class="drawer-item">
+        <span class="icon">📂</span>
+        <div class="text-content">
+          <span>వివాహ వార్షికోత్సవం Photos</span>
+          <small>Google Drive Folder ↗</small>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="phone-container">
+
+    <!-- Navigation bar with Hamburger on LEFT -->
+    <div class="navbar">
+      <div class="nav-left">
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleDrawer()" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <span class="brand">25th Anniversary</span>
+      </div>
+      <div class="nav-right"></div>
+    </div>
+
+    <header>
+      <div class="title-block">
+        <h1>25th Anniversary Photos</h1>
+      </div>
+      <div class="clean-divider"></div>
+    </header>
+
+    <!-- Gallery Section Header -->
+    <div class="gallery-section-title">
+      <span>✨ Highlights</span>
+      <span class="photo-count-badge" id="totalBadge">688 Photos</span>
+    </div>
+
+    <div class="gallery-grid" id="heroGrid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Video Section -->
+
+
+    <!-- Gallery Section 2: All Photos Grid -->
+    <div class="gallery-section-title" style="margin-top: 28px;">
+      <span>📸 All Event Photos</span>
+    </div>
+
+    <div class="more-photos" id="morePhotosGrid">
+      <!-- Populated dynamically -->
+    </div>
+
+    <div class="loading-sentinel" id="loadingSentinel">
+      Loading photos...
+    </div>
+
+    <!-- Google Drive button -->
+    <div class="drive-btn-wrap">
+      <a class="drive-btn"
+        href="https://drive.google.com/drive/folders/1OxKiIUKj1D0gcYhlHUVI-kz64plGqigg?usp=drive_link" target="_blank"
+        rel="noopener noreferrer">
+        📁 View full gallery on Drive
+      </a>
+    </div>
+
+    <p class="credit">Developed by NC</p>
+
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-header">
+      <span id="lbCounter">Photo 1 of 688</span>
+      <div class="lightbox-controls">
+        <button class="mode-btn" id="lbModeToggle" onclick="toggleLbMode()">Switch to Iframe</button>
+        <button class="close-lightbox" onclick="closeLightbox()">&times;</button>
+      </div>
+    </div>
+
+    <div class="lightbox-body">
+      <button class="lb-nav prev" onclick="navigateLb(-1)">❮</button>
+      <img id="lbImg" class="lightbox-content" src="" alt="Memory photo" style="display: block;">
+      <iframe id="lbIframe" class="lightbox-iframe" src="" style="display: none;"></iframe>
+      <button class="lb-nav next" onclick="navigateLb(1)">❯</button>
+    </div>
+
+    <div class="lightbox-footer">
+      <span>Double-click photo to preview iframe • </span>
+      <a id="lbDriveLink" href="https://drive.google.com/drive/folders/1OxKiIUKj1D0gcYhlHUVI-kz64plGqigg?usp=drive_link"
+        target="_blank">Open in Google Drive ↗</a>
+    </div>
+  </div>
+
+  <script>
+    const imageIds = ["1lfXZkbk0MqlYiDGYBBTZnqnfY_8OP1qU", "1RRIhKyGIzybEOSOtG0EiwY23vOAjBg0B", "1KUe6qPQostzWlP5T72qPYhqEvtsAvLhL", "1-UsmWj4mKN_okWE6UTTcdSkU5visYzNK", "1xQ1MdbdgSVLLEIMC-FmyeBNIBYHbutBM", "1g2bixoTOCA1tMhyQe7PNw3i16QIUoN7y", "1X7L1tSuhZ6xn1wqla8lKjk_FA2s7gtxC", "1-prcM9f5Vdcn4w5JaHeIyS6ZzB998nXW", "12jLmsf1wl3_Y-HytjIVdNiulFx1CNY7o", "1biGzy0belpgYZlCELHk2htZ_PNUxRNSK", "1sH35LzfHeOyMXp2nkKcY1oA5HBACISiA", "19h23uvyXS1yUWB4M1ZT_ljbSgMxJAe-5", "1hXd0yLdjEefmlwcOeXry50AZnhhBx2e0", "1WGyqRUOwQkjGtoyJpub_pAobfm44Kyms", "1YWK3zZLWCRPFIuwVUTjKGZ5sqTigeX68", "1Vkz62kqvi0aRALX5eLSkv7WeeZqjMsTD", "1Po7Tc1pPvQEemXDOdH51pv1DznAtUD-B", "1U2-j90yF22Y75RJNssrFkdeCez35HESZ", "1-45F2QZworPIb3K5fZ57oNfn8MEjpvzc", "1k8YfKYi93_Not7UfBOW38J6rKWEF4Lda", "1VK04QzS_6NYvCtniR1nNZcXysecUjyuW", "1FQ0W4Mnf2kGz7GTUD-YTXC0pamdA-zGK", "1knCPcxkY7dDGuyjPfsmm19eugsayKsRg", "1rfxBBysLWXWTtMXIbgs_c_skV_y9l9i6", "1z_IZ4TYaOvVHqtzf_Zeznz9qqxX1ISf-", "1xkvRxL2WKgHAXgSj4DYI5AEaYxYBb5LD", "1qe1bpoirfYGGXXMhWhieEz4p9UD8OER8", "1yQ4cuwLijHCYIF5p8uxW8yFjrXY4cbCD", "1tQY4FkPVCLTNFUYgi-J9fLvwLj0Uv_76", "1lEzWGyIE3yCN0uvPfqc4fTNayslLPrfz", "1n1DH3gFN9etcTz4r_Sr7ZcwKl_F5oORz", "1qmLtnHOksN-XPvGDYDL0y7bSJQ2_lyme", "1h6orX0PbrhzZ-DBPv-CLCvrhAP1bWFOd", "1BrAJfyMOQxKdsKhFyPI1gqqDQNCeOELG", "1eQaoSa39o5Ow_Hdgr-QVvzTjfVHl1YXa", "1ODpa7qaY_QMb1oNEGHbB5UBXeIBapL_J", "1-qMz0N_Ez0Va8022Sq4zCqKqMTrr5wrb", "1PWM0xk54JMmifvQpXslwlbFJCPQ9a3zD", "1LLZPlhpp4uykKFpIL9aiK2Mna1wtCx5B", "1hKNoZQzilBkTL3nrqfK5RXlIDNCX5XgM", "1cVjXdulRuaiR0DzIpVkHBNhK_PVceOJ6", "1CmwKM1IHWgx8I-iAn1G7gAUnli1hjxbV", "19kDSLyCHkj3-qyz08hTfDSWjkezAesXp", "13usicyxG8vDRS2x-dJp9KGDe9uQkf-LM", "1UI9k4cvv-Z6wtHybKE9okXMWHq8r18nx", "1QLIacrL3PEICUGkKHc1oGhZcX-EwPtz4", "14O2KIZmoy-DJcz4po7rt_vUKqDa5sAWt", "1F0Vdg6jLCUUypibZUQwgN840T0PQvUJk", "1t1tkT0F0jK2JX7ffjdcmUSo8H0CbFHba", "1pZdm4LfwF89j1W_ioP8IK2GbteLVLhlX", "1tbnxneeMp3qgeGnHhNpl5MGYEUYQIzWO", "1n2j8twgPDld478LQyVGn8Eq-8jQh575c", "16cJBsfcKi2znzGRs_moIM4c3LVppBaCj", "1q9V5bijQVolDx3z2kbET7KVBaPKyj1iW", "1aiierwv6VtjFhXPlY2sX8Y5ZLewCeUnZ", "1UxixpxjiUw-6rtQYpyXF0PogDCNYIAkA", "1fwO2aGB_qB9kXAdoJSPOls74dsjrMO0s", "1DOyREsZgi1RTijk5XNkhySdRSpjDZS--", "1OAwAVimWRr6uNaEy0NakTP6VODD6KXZK", "1zBuGnI6yCQ9XshifOp8FaDkvNBStJdue", "1qFiiU732piSc0d4XPwoyataVqClGNStn", "1RcJEKMaXDP6X5Nfi1sfTyf9HQWLucL3H", "1cNHUkCEoiy0Ec6Fm91YcCzqC58iiUsmy", "1Rml6XOQ3BCzcRZY2SW1o8UxyoJvcr0-6", "1WSD1Bn_wiH0Hw_20z61lRYVukgd1kHaM", "1qm2wzLWtW5MjiUQ-_-w9fFjJD59MxLd4", "1ijP5tTqkkQmFh_Y8ne6wSvnJxljFim66", "1LdwSnaasm2j-mUJZ-Xk_WYCK5khkW36Y", "1m-a_0lW4hvJpwb1UL9_09ueBh0ulQw5j", "1KUpfMXeD1qYMZd6jJTz07Y_SfEDLPYCu", "12e6cbHMAF__AR1TQekxG7um_I9INM_Wf", "1ME6Qep4zrG0knUBrAq13JkK8CIl5aQ88", "13djk-5SSuq8tH5r58VfQ5IMuXQRUPq9Z", "16H60gmCbeEyTiosbwrD_eJ0NaB91fHQU", "1VD--NnG_5lUt3lC2u7DF8NX9Plwnw8tc", "1LEzToswDySMGOn1FdD01tRKNl-TJRNlC", "15anw55wqdJPRFqR-aUoZbRskep0K3ToT", "1eVTYCwWnbTKyxvPBJ3xRTu7BV1nguiAv", "1FhrySM2VZkQ2YzFiBu73mWr7yHtvrWRi", "1erPFKSU1vk_hZG0QsLeRwXlrPajBc_ng", "1rvFt63QGJ1vQmX5hWZPng3nbSWyIRkGu", "1hI1cA_QAIegPZbh1Z-2jqjGfbvHUyJGE", "1a1WGJoGsVBkyCg37DLoyLs9eMF51F-po", "1cGFaq-V3YiYCVa7m12jI1GV2B3gCBGqn", "1LThW-VF_arbPvqPw_F8hD2uF6HeMEg3E", "1yAaqsfoMqml8UC6wK7dwmCUnDbRU7OxH", "11-etP9Mk1Dh39cou1rnIhjkzTNhKO72K", "1nsSvFk1-MWXNzk6fidhbYdp9Ef5bwFW8", "1lXHJOi5J_-vULrKF-imVk6ooKtnA6LAI", "1NKDCRL0HYdOiC7hO0NioKmfoJRtrsHIc", "1XYmcmS_sZPh-deiCoPm81oTV5reFqjLP", "1BZgtTSJR0p-mrL-2OLoL1T72NDEKMqIn", "1zkLHefKvgq0ryd27ZdawRc1LO315OtBU", "1NpZfdhb2BZrjZVOj7zVQlyXp-WWRDkTR", "1Qt1fy-i1X5PVzylI3nJZO1v_7OgYZbUh", "1RAW1wMFHcZkrm496EdC95s-b7fErNJJ_", "1so4UikMNLoAxYcd785NUM3NpEXSRJ6TZ", "1octeyjMVjXKVVYmyCLM1OtgRf07Lkxzw", "1yeGRwH1I7-R8YynofqKCdQiHMZrNpHew", "1x7NxgQLailUvgdBpjA37z_KrIO_ZF8dX", "1X8IkdCEz989Mquyjrc9vBvv6SZGMZbBO", "1mbe9thKCf86TF4y1sayH_wSAloTbPPRq", "1aOXgafBMHKOxexPWINVPB_Gqs8EnS6WK", "1L2BEB7CqA7mu14VmfbfAJbWTdoXmO_XC", "1pgH_JrmFzVBUch9kyBedc7zlHoUuqGzh", "1pbN_JH3T5TfKXSbcvaCUfhV0Qy0YE-IH", "1Pt2EvQmdni1y-H8G10hfjaB7rwiV_i2g", "1YXWZ1w6XRMTzlPqQXORvOZ4r0ELQfkI3", "1plcN4LhTyP6NZdTYB8IvbkhSuvEkb6wX", "18UHYNA6Ksn-Hqu7L3RVRhDZGHNB5z8VI", "1mn1cLb7Nof47vTXD9l7TOKM7_wmRWALz", "1afbxsEhJiA6BC45S-hyMB3FAZUJ7SedZ", "18Uyo46hy-0yoHcc1Vg2EuilYjPPn41jH", "1Xc7LSr2gA_ZHczzreV9rpCo4CqlFC1Fu", "1L7tDZPt6AvLY55ki09ahJbJHtQtIrnxb", "1nL56chQHNFt-LbwOxXuhnHlfi-12a0FZ", "1Lw0NhgkePOFRWclAwelMHkh3cPJwc-4p", "1_M0CgK4QpeaQiU1AdLBTlXnnGqA8G3aB", "1AaTmuGPTPvEk_3x0OJU5V7Mfw6POY1k1", "19pFSVG8IIJVSmpizJoVfvbdRY_oYAUzX", "1QbAcshewWIsz1pJS_4jP8Tg0x4u0iJC2", "1zx7gBC0erDKBJQfVTpfFC2zvJtbQT3hM", "1XTLXNCMKrRKPCQCPS_B65LeNt2PaFGHy", "15CHlHfPo4oD-9R8OacRRPC96IEj1kaoM", "1FMEOR7PpYZpljTxA4KXgHbXzn_uVLKcK", "1fHvCCtaGWcU0koru8AyAbXSBmOqjBAm4", "12oevbeOHgzgYekTwphBEaCMUb62jyjMV", "1UfMAowZT5fCSmiLUndmhuISAFkcv2IbS", "1L6VPuXLdDJykLpuw01DY1OOqECLIFp__", "1AGaog6lEnq1BaKeyW8sulqwHGRM4ZWWW", "1zmjEsAsQa7q5m5MRY2YEty87Z_WFw08Q", "1Wir840H4SOsnsd0onpzB9cU_czjlRrTG", "1ynvnqdKWZzIs_FC3Om-MbC9oG5OCA_CY", "1kUfFlAhiOF8bzraZmK4fg40Efu1LNBNn", "1Y1J5IeUhlAiavt-URoSsrYjy_yvWugG6", "13eog1MLezgZyt70A9Cu0CLVM6IdkY1NN", "1bkVooLMf0bMMh907mGFPZsMwaZW99A1n", "1dTZTRzWjIvk3R05J0NkDm_5qL42j4QNz", "1TTsm0_H4ht5J0ZVTjOK4xTG3CKPorSLL", "1LjPuRw4BzYHghwass01IkwZzR00l2u_w", "1tw2JecyzBWtsnrUrCHXkOBU5zjHRfmWl", "10AsqerJTnk4xmdcAcuM6WtgTZaBaGZOm", "10A8tv83awYuRvI-LXylWQHLAApfmABqx", "1jB6ojjf6lkUX2O3aSlM40kLASnlhj9R-", "1JhvwhtrN1pdigJ8nYPFYzC6eK6ZXd1a9", "1Qiz638yRokS-i4gMiDdwxEhyGO7bZxD1", "1j-TBWeBhm3tNdlcttXaz5BTOuYFxdzEj", "1B4-Xh_0GYuJdum1CiJJYPeZEYpVkm-8g", "11L6b-uP6Ah_NM3zp_BvomJxygvFyp4dL", "1NhqpgzqV-oCfBI3lHrR6qSrZ2T726UiX", "1AxBcdejtjY_nt8Qj0uunEwQpr_f9lm5c", "1xqeNj7OPvh8TPidMZAmtrgaN9ZKgHj_S", "1xjj9dz-znAw_n3dSDbF5_eHeBouKqnPl", "1rTaQNo2z1KUGi_urrYclS-5qG1zbMVdQ", "1k398gUd5we8lLvjY2KcNjLWLnbWm8Tks", "18RMiStPGgyJtufLEdoOv_hAeeha_g7ic", "1lzqHr29cUDQh_cfizHxuIVNn6d0CT57t", "1hjMcznpHVJSFHPHTxxmQtgYpAxkAXjnX", "1O4dAxnMW0H9ryp3c4m1ESZ1UZ927_Pm9", "1gviF0StszdJCNYOAfsG2stc8E7O4Ksm7", "1EtA1LIHd7ozAjhLDP_YKZqeD5hSuOhUE", "1XrNRKw-tqADj40y5T8v1KBy4B2LncOq4", "1qUfAa8VhGTXWKwsZUvPJnWgAx7oeeq2K", "1o_6cdQEBYO0bvdOvci7w-yaBAQhgcqu8", "1M3zKJXGVrAkwUNeVCsI7jHgZ3UfUz2Kx", "1mPAUbkZFpHml8uNISiBXXdx0hlK2F4i5", "1zKkyRjpsQDJQRvXy1plqQLw1-ngAv9lW", "1o1JzEzwVcEZWrSDsxNSqXWYqKaT7KRcZ", "1y_UaPKZJIoBZiSe9iF4fwFYshf5QI0yn", "1wGzIrd9sZv1xQREPBUC0hR6w0G65VJxl", "1j8Vv3fQUP1eochsPpFx0EmcXRZwhR_P4", "1yP3oR9yyYftV-Acf9BB25W8-5ArJ4ZZF", "1RsAZGolIo3mIp60WNYVB5ki9uL2vrpHX", "1rdI23UEudoiYmk5rexaMcqvJsGuucPmW", "1FmJgPEm_p7AXkdkBu18Y2pB_RY6kMOe0", "14o9CUA-FL7eeIoRIeMpIJbOaL73pSSMG", "16PkgcY_Feq6DNoCMOKFTcOjafs4jJ3OY", "1lZXQtFq1mUR_Sz3_cP4x7OleusafhnCq", "1lc-bM30Ptny9dRbQQK1l8aPAShEHU1g4", "1YTVXlpCjPmOQnHOW1tDlQVHzxpKXdE09", "1DLNySQVQTe72iY8YIDe_L3Ilz8uS6jav", "1vIZyPaShGjkuqD-TREjSuZyZDgvvCfiW", "1AO_xVb7AVRmDkwHAvzGbvpmbbjvpkQ8F", "1z2lJUX44A231EY0A2Wrjr5e6T2ZgevAz", "1poWft5em6yg8sTHpHPTwL83VJc4_dOSR", "1YmIq1iR9zY-WJY2LfWWF98ICVLSyvdue", "1pgZeSb3us9es0SW3R0BaJgrBz7eE3PQW", "1nQtowcl-PLXpKka51k6O38BlBzyTS75_", "1Zy9nKhmElECv6QMbfIZdGWlr5mIpNxEF", "1Ybj1kNZT2U4mivfQ-SJ1Ww7I1Q5_bi4d", "1mhiOxDsfQ3jJbsXXQKwo3mTRu19IJRlX", "1FwWcZBsHTFI_M6DMYVVlq9qSAYrIp8Hp", "1picxZw3Bn1sKFS0LKKTWi-GHcLkkdG9Y", "1nhWphUnZ6YFLdwgRb81jOlTypsZFpedC", "1LSJqlUzZuell56l_GN4rx_inQQgu_H1H", "1ekEEIGvGHYidvUuyUlZM9cw67x9_d7JI", "17wi7k8u2SNjUOwSslENE7sgooe-Rlyua", "1SLSiRtfJ9ijDzilyXOwGNBhoLVLqrBi2", "1gKqHMU5N0Vm3hqsILUEBBdtQrlYXcT6B", "14eTMfkZbSMhq4N6J8LKuSIt1RZF7mlx6", "1siLbocYMVgJPpKsLS0OycImmQ6xNfTI4", "1yfqcteCxHPTUhGqVoJnqN6Pw42Dk5w_Q", "1Zk-8FKhKBih4LKkYLs6iRtttz5vRLHYI", "1JV0HeHKcwR0Yu2mbvccXf4XGqd7P6biz", "15pVnZxU3U81YiCzLQB5wwyBgdQfet-Uj", "1i0ibtOwNN87-8ZjO8Lcx30IJvp-TPkVa", "1UsaO4r5yzvHcKaalY5jxV3hblqgBTwyk", "1kcmQ3ZNs8CdQqziMdMDK33ArQQXqEj7W", "1JMRJhroO_7H2d2UHlBTcoOg9pYvuYXrD", "1l1F4aHl_wEOHabcb3r6t6ZcIr4ywQSkf", "1hMINdyfxxDTdm1M7Te14-aWIaPr2QVPd", "1BLJyElOOoITQhKvN0mP3IaoCerm4Aj7J", "1CP5ybO6ILM82EDF7Jw3XYl_5M4Es6qSZ", "19jfSkkF63VwtRubhxgnOpQb6txfKImc6", "13L9eH8Jp5voW2RSb-uZ5oWsHIlf629zQ", "1ypiKb3VjW9ea5ttAxIVVkMn3JaR8f7UA", "1mhKPXX17LA-fgczoygumtMIKMfz2zPuH", "17W4PeW7MyOwkXSISO67GkdKODFzChJHV", "1cOQub-qzZyrkZI0hrZFk4g4-RnidYZnc", "1ZERyHZKOU7BjXfHrqKMkYi1SjwWMwogB", "1QmUR1wWAF_Wr3bc2A_QW2mHiDRgq2804", "1ql3mOWvswKMGPUxHlkPHMvFCMNP_k0Jy", "1fZuIMB4cRhh3goE6mV_t6GsiWlYsoMcI", "18YKGvVb-kccAZYyPsyu5ayqSPTVYNCGS", "1cuLLPoJlO4MyIy96UUlo1Txnlp_uaPkr", "13LK53JGmx-6pHsYYBmXTClLES4rvc0Dq", "12z-UpvTgVNdpntA0mQWGrAHjdGkvYEUe", "1q68-x98W3W3MHo-BYmjcxMg_xazy2-9M", "1Q51Pfkh4BzAjRkG-TPeb-9XRaZTXISMU", "1PUdUI0uJCIs7UildTVM4y-cYK3BvnsVv", "1sqnbnbN6ItNmy5sD6J7SKz_rVLriFom6", "1biMbich5ygT_MTRIPvcnTiWdNhibbyZm", "1tys8Q00GWX5g1chGVKYSJ8fwbod_eeAl", "1gELHuC5HTU67GbPo7gGZedlRTWfUQ-JL", "1SRrslaKPkK-0HpotPpiSSWRh_ATfqf3P", "1jltQ4x9a1ITqHd83npxhZ_jIc6qu7WLF", "1XsuUZlzL4FOIRXPx3pfAx4Os17ePqGwB", "1UQq8qrPcy_yNyQ2GmB2z07IXYghqd6ch", "16kRyNw0CZaRLa8yizFWdPxNkjGTON56_", "1HNaLb2Ddil9FBg4Z_w2-yo1UwSyk24Gd", "12VReHYo_KyirKMF8ReGalS2GCYoQtBEw", "1V4qMKLcewU3DFjIDLZUJ6tZblJ3Af81P", "1c1hPCPjizPXDnPA28soUzHIWwuiJaVhO", "1acp7O7UuHUlK18x1ku9NPgHf5vgMA406", "1ihspt9VZTbrPnh8CMCpYSes3wbCHNRtn", "1fP_v66_ddYsEo4560wukCFhluzVLU8UL", "1XJMpnDWRB8xOMKBiAnhXyYBghQpmNX6X", "1UJ-L07j9SlQ-8mvDbdD56XN7aHYq8N9P", "1gqh5Jym9BIZAIfLyas2Mx3juDbiWqnLv", "1U7A4OxnuFog8OZRD0lCdLTn5gt6LviVM", "1LVDOS_TkudHXBjfswPJ0o_fqmPmJhHe7", "1BCH7v5htqW07MCrJ-11_OzW3mlvJ8bgE", "1e2Jv_y2FSwxkPfL1GbiBGbiZvGJjIpP7", "1nJmYGjQtIsIVlI5qEjPxWyh8okW11RgR", "1IwfgCFE9Xc_qxfyaMVsGzImNmYWidFSn", "1zm6nZ_NVKO510cAhBJ1kdJC8VqJEOJQ7", "1skKCehpjQv4TnIE0wFCyCpM00yqL4HvS", "1ayvQkGMpgUUnnU3ViAyj6pdhR5sqbn1Y", "1PcSsEpnStkxNrPx1zOfgH9tqdGgmkksp", "17-9VbraxWe5OoH6cIBp4lyGD5D4Fmlcm", "1-QqswtlqFSYrRKi2pcGbulVAtQ_RQ5Mk", "1BESfUls7iwjZYyDDXBDmYATTd_TO6bkD", "12HWr73SxuMM4UMq0D3bldCany3ouRDbx", "1ILWFUBokcnefEh0Th9Cs9p2EbUUznwXm", "1Y4NOmmXOa8mksVJnQM7_ZjUm0YgqT1EM", "1nK3lpTZEzdlAagynJga_xHvP-kJ1JgNZ", "1c67LpYLQyPQgUi_AS7fpK4FtJsmt8Ndz", "1iHOnMoxaFUB3Gx6cjJiuYluM47yjre6V", "1e7DMgN-Xo1nL81FmnKBfouTAB_2L4iXN", "1fLxccOANC4Ez1rt4g29Btp6YpnzD6pup", "1IM7POIOmgC3BVc0AdThLm149u_o-KIJ8", "12E29lDbbLD6_PQ4nTfv_tRKukCx5JdUE", "1cd1WasbRnAcsdP5RiB7u8t2AMxX_4-Rv", "1Hh0E6_WjZv3H263nyC8tq3BV5ipHX5Lx", "1YIe24GeAqTnYxH9mOlUkcP9jYBF7bUHJ", "1Z_EdpzZnWBl5bgOjPPuVaDtCPUna6dDW", "1HGjfc4L8twnFpG6SJQAYccEJDajHD3A0", "149Bq-pCHuw3DwbLl9Y8VRyXN4femSDko", "1c6pT8AumNQ59Aig4Te2DGfFP6LSGq5cb", "1bJm8gxZCjjGUDWTCiKDGCqF28v9W_fYh", "1mwhomt94yokIlE-PzhQlDfZvsgXk6fcP", "1VTxbpz25uMde8xaJWCoLIm4FveSAwaP1", "1jrWlc5A1LQGdDcWO1bSGAWIv4QmEbRyJ", "129MkZKAiQb970Qin-mmF9KRkmRzvYN3O", "1CmbecxAAtgnNB3iFopqfLPj29fUtXt_n", "1BNVHDhDb3Ppooa63mDZMHetB1WMpwNpR", "171CAUC9IVUD5x_RyM_nwlc6rzHkmvlHr", "1maKfJB-lmar3CRNApKYdQz4rDmln7p_k", "1TAax2P4woUc8CaWsDraywVg9c549xIDW", "14-eGK9hbJcSf_QXSFVdJNrmZncLBDMsT", "1U6SX2kOZn712hlJpAJ65QkDMXxr5Hxi9", "1O1LK-fv08yL1f0hAXivKpyF_IhKXdg-h", "1RQ4OLe5C49aSegBcFw5hygBfoG6QMPXj", "1ospZj8DO3iUosEGwFQq506NK17OSUu72", "1TJz0XJr8x16Xoo8tNIBUQVIELnsIPWuK", "1yklEGkOiM00E00Zts_ERtnmru5v4xbXG", "1dThleOkLK03EVbytoYupnCLbNxho4mN9", "1Ptg1_q8oXJc0Ot8RkFqIclPxqR-Ga9rb", "1Q_qjDm-rYw5Y--atYWlpdeAN517d6Uxk", "12cOaai22yCUD-g5Rpvu4XnyjcTtvPAW6", "1TzYIA7FihC8ARcgMxQZKt5UsQ0IFiOz9", "1HtF7iw67Rc4HLLT2MGPXOWJ1-Oum0qZh", "1PkcnEA5KrwCro0pq9kP4Kep5TEsPmYQC", "1Zg6doQgLOIx561knEHdH5FuBoJPQlCnI", "1t7-jcWZRKHXABmAxwqB5bMPj6wk4EyO9", "1rrEGPqyJpqkQ4y9phy-JsLgD4YCzuXG0", "1QCGPQ9F9o9XSwOwtvPt58nqDbtQFcExB", "15H4390x1Yt-fvIuD3GwUHJSBQf6eZqMu", "1SoJYU6USqTtFhc3YyuXBvPigv4M9exlf", "1T0rODXcy1qmt2AdvzPZaB-FrLKrjR8_8", "1sk6nq1QpY0lG4hnhWPKFoqAUQNEsQrqi", "1h-KzQ8R4O1nhSVTqZeoDZHQP1NmBVkhZ", "1KJ_Mjz5BdlE5_-PTQMokcaZZg9NptTY2", "1ypGIfDVE1rWIMvEdiN8lcaePHT39B6W3", "1INKSR7utG7KJSilh30p3wurc8oDbRXyT", "14rQvz_Cm18pums8WcbSIgWIAe18LXxzh", "1BenxGw9r38bWHioy3Qj2NzxqxIQbIKm4", "1JCDimwUuRHvT8cNt86oKZHuxtdBjrh0P", "1fLQd9r7_RZd5-o4nqFjZZ_xxPcAEQUCj", "1ShNrtBfwEwa1PgEX_bZw9bjIhW1QzYTh", "1-zNMtbwaczNNbvqAGGbkMjuLpQk6jKme", "15C3sLFKv23NHjpXCSTe2-CufXv7IK4HX", "1D1RF_i56ZG9dqi7Y_Jxzn8RK-ZUn1feo", "18_nyOcsZLQx_nb_URJS9CST04a5WUEji", "1Vpn1pFBTxFbcVztUJMwYet7u03eyyMsI", "1G_VjvsCpGCrUNFfXC6wzr4M9cVJ7CkBq", "1lhGrOsGOB4jLV0dOXBzapXPvxDzQcfO-", "1hQXxNaIXQP6XUMwQWm_qb9yZxlwOfOMo", "108NgAgmtCxt2fim7a8ti31dattUwYVpX", "1fIgu7cfmgYEiLOMV1twtynH4bnQhWu3O", "1OtWkyQc317v3RykBKV24hZAEM_6n5AYU", "1T9OvPwNGGfgdlUeKJwCdvDN-70az0mnH", "17L7c1IVrLfaSC7gTDS0DEDHudlwlmbq-", "1ERMjI_Z-Le_ofMRG2lwJ1zq0IDSKINyT", "1ExrLDB_nLTeIPKYUQxDmhx3X05V1C7KL", "13oc47EwtP0ZhbR97psISDxqIXA7X_gc_", "1eaOkLkPbjcmkylVdORMWLuxSzQ6EY0yp", "1TZRRq6z_ysNYmIWd2XQFzknPkv9WfmDp", "1STZi8n3JgtPpGRMOyePIf9Q-tTljvt0N", "1FknzGbKgnBuYtkt88kLkuqWcldJPZuCS", "1iypG123NcfRdlmDC4JE_OulI5cMJ22Il", "1NRyBbNSZHG-zDAaG04cjum_LIHuss3Bj", "16clZf2042XlYuqPkDEoabolh4xSSedsH", "1Bi5vW21D60rF5PEjB-H3M9nBEj33IsAo", "12YNahIhOh3PomAMgvi6xasR40HZIhsSn", "1rB6utkIApAfUJr3mkTpYdpQ9wvLepWvu", "1o7NxY-halSfb3hTVWRot30AOBRD_aD_6", "1zncXPXsjXcE8wf7ETcEHZibkBkQwhCrr", "1JolgBtW8_BZL-yTXhl9-KqvD6KqKm90o", "1voHg9798b41pPZKCbxVpQ0Cp5_62YzR8", "1favHELzkOrSAdaVlhMI1qKHg3oyWHUX2", "1FRjaF6kAVs0x18wMtUkz9kL3Tw2G1Ka8", "1PdVbhUDBjeeU0yKx77XW2X1ySFJYw0-V", "1PWqHzjaPzRTZG0c1N0Abu2lAo63fahMf", "1AHelPYKEnRanE7EC3r43h0RpLR-E_2TE", "1G_-tQSxAzLBAw-83ggS5Qsb3ScmJO2ut", "1utKSx-IUxAoojsQRBQuNbJbetjwxScTM", "1baE3VRICFpbov7IH48Y2y7MWSV6P-tjK", "1Gs_ww1vtG4qQQy3iL96wnhNgTIAXcclE", "1rCupMd_rNxeopHOv2-ErNU6DC_kbhauo", "1n5OjWyGfMaZ4H6nhgvfMeUZxJ4qaEt8s", "1yIxLU7QxwLv_KoMVjiHMZlK7pRPkd9IP", "1DA3oh3iWyC29Qs7jE8tPMBbrGGKvWRPb", "1n-nLzZ8d3itm1f0hSLbfHg-KhmkrjqOE", "1sC-8OpkOTe9v0WIEujf9XYuRuJWR9A3B", "1NRF_UYtraHX8zCfUu3CxbCcOPmCp4AUc", "1gDc6gC8Bt7-GRN8zAKxoaSIKZ2QDl4EM", "1vmLNB0_oSgRLCLEXXgqHG1o6mv36Ews9", "1C9tIPT7mA6AMV3oaw04WoUmbR2ztXToe", "1lQhcf4E7zuC9XpMbm4K--XS_1MFutyJj", "1DeMnMI8ei9CzQOadOlEwhuHwxrO87AAx", "1O8r48Ui7CRF5E1uoKV_pY4EQPAnovuYN", "1gsLvV9A1fhBxYGXIXJDQyhjBYY3Ex_E6", "1MyxvYAo6hqnmjC52PNt98PdeoncSlDcv", "1uWFicFFerRCXp1KwojXY0gh5yMPHtfqB", "1sejokprSUj9q6W8EDQwJoBiFK_4rkJ5f", "1q8HUQWBu_RUAUBFCDOQzPbF1y7K6E13o", "15nKDKVnsuhfBoiGQMVogmbZCXsPx-MZN", "1IImfPfvr2rBNJPBEJt4zTiBI_gqOG7Wu", "1RwcGzRcPsia4aI8SaTccP3Y_zTsTklkO", "1et3tHAXE4iA-3ekaMrjSkIrNE50HiLtw", "1ywlMyx57U2Thfk2uZd2Ltwzv0YLNAjWr", "1-WxwlbsPktbje9aZ-F27bChHzXc1Yt_b", "1JkrtJqdQSjetGpMQ9pjvxqsLqxQB_EX5", "1XFS_UzjSh29IaxCV6jbSk290wx2eiIGI", "1gAJnXx5zYXUWMqKBIJmD2UGe-NMhsdEI", "1TBclQ8ezJHf7OI4b7zvSuCej0alfwr32", "19dQOTTvwT2PtFjGdoHpeuE_neKxTCTWx", "1UXlE3h5POi1u1PZNgHEQ69bewLkwcqjF", "1WVt-mcsi9kK4vnn3_bVrV2OVdVujMI4f", "1NQ2co5xQ3Ud91Sk6oP6agu_fQCJvMTwu", "1KlX-LKlQCbcmXegLBU-ECicauc-obVqG", "1XGbVENyFhhz13B5Y7kAhMnrijXJIvHqr", "1tNMET5z5NMRwYf5ctQL5Dtjz5ckOwGvH", "1Rq507mXSYkIaTNeb66Kf6weV3BUNl8ZV", "13VFjoHMADVn5XG4qApK2_IufsgxlTlU3", "11s1hpeSHPlboIN_UNhaI5JERkhKkBFH7", "1sFMYWPMZfXHkAZpxklutlJ2ex2DxlSB5", "1nOrLB8nsIWYsjopFcpJWK-_8O8gurG83", "1e9GsN_zZlwBB5qYT7PLpTtk0RNFPm1xy", "1OTfGEPTz22EyyjHYuuP92cLgyuVw3JEg", "1-Dm500uXWP1yxCurli2upWfya5x5A-ID", "1m9p5vkV_WcTHwgn_8U80j4yMdMabk8Yv", "1iKOusntibybb7Bfo7LnmvViqijiflkVE", "1FlgqXRL4BTghBZIbRNaXEjZqKcJJOrSP", "1c6KhoNOoL6Gex8Xv_iqvuj0DIsBeZkZP", "1CML98B_8zWN0OGqs9GLMMaZ53O75AGT-", "1B1hWNlZSG6ePVGgbYLjLtns1zlv3EL1g", "1vIYwnf46mxiJr17J45GTxF0zWnZZNSv3", "1J3MZSOyRYqoJZMA__3Ggt-AHWQrKrcKo", "1dYYuKoz_ENQtI0ucvOVkkThYjTRxqZ3G", "1Auqx-z-V89DHclhXiyHZ8XVOm8rvrs-p", "1tAOUkpxqq6yBbNRr70fQ2jD5GjRM_5av", "19-a7LU3cRnj6z_2kveVe_XtI7xt4rZO7", "1MS36ar-SiqiYq9gdGWIUCiw4yYXijFFi", "1AzyNJbMrrHFkg9y_2gDIAf4U_00N373E", "1e6JAoLYJsuc8v0uHYneInIF6sPf03IIb", "1T2LYJoRytePLBuMvU80_FFavXkzr08OG", "1wMnGkcMMZAZ9h4ormBIzvV97_0Q_jrDh", "1GGqptpoB1XwFu7D3Gs1BE6-IosyHzfsp", "1_MRJznrmEn9AqPikgtyIh_dRAdR_2fhy", "1yU9Kd3-yusm6LrX4NRhLMAxHZRohdvSz", "1oEBZr90JLbgAHo8rrsWAKnsYDFlhMC8c", "1tfp1_H59UMlCerAnVR3-4qQcJggoFKGz", "1upNaQapFzi8M88hRqa0xt-yAqPDqaV_s", "1dnmmmzw75j8NjK1xmlm6fptf8A5FyiNq", "12YdzGLCNhTbylo4uIOSGWuKT73DbDJZJ", "1ZBfLV000qfWcF0zswkhJqTumxYb4b1ap", "1sJNf3bjLzAO1QmHrXrq01CD8Pk9yDx8f", "1T01k0YMvAaTK1DVYGFJjir7mFS0JK2d5", "1glGnTPhNT26XxaAgqlx_JAPF15I9vi9v", "1UBDwYS-2BGoDOdknYz5ezIyTR6J7WGwb", "1dIt5My-NuwA0wJHamWq_kaau726wxY8F", "1phGVTH0KG_GNALvOVz9oXt6ntEjoTEe8", "1m8AMNqg59Ug6c85jgAV3zx5sT0R3yPMe", "1LSCUheBHdKHbnJvy0XHGg4nKY4bFAm46", "15pj79TlMJL0yakNbU3fgZghqYoT61xk-", "1GQ_OEOW6TLE4QmzG7BWen-Sy1AplGPEk", "1FuC-jq1xqoR3SkrdNZaFDwMk7Kc9MFwq", "1mRJrHwLL8rKq0ABhfioNiPg1qiRMrcTU", "14rIzozV5OHOJLsIQas1KXax7oYq8zwcA", "1G01_XSfOcMTgIdke_1LdkJJrfbaFQ8cl", "13kiqMe-dxIwP0OuW1wYpk3lvLOVVUwyD", "1yI4cIA-L9bpMp0n7pjgmrjO5Bv8P1BZG", "1pGEytMEFUTWkhVP7bnFlYKD_qgJLPxZJ", "1BX1zYMZQL75NSr1lrpDO5S3P7yFcjn6-", "1gGYRIKZ4LeL3xAD8A1n-6Pqqshsdu6-6", "158aBlLzQNNiJ97-0yISjYmrV418C64dk", "1L1cZa1GkyPzFuzX0eNIwYcAKThLIxkyI", "1FOOPDpCzTxBE_NXcE6iS8yp6PlayeeTN", "1496hS7zjjp4dY3MMaWuoa-Rupikmz2u3", "1zs3Xf7Kpbj671fKwcwWMcVtBqs2nqUMN", "111ZntUfnI_CyHRh_X8TfrMCqov-sxPbk", "1I8yPfD8SoIorLZFd2UdZvjhUzrPfCJ2k", "11qYoD5UOsL-uXN2XBaULviNM704Zvnh1", "11ye7-IvR52TIc39eoix4JIWgx6ujlXPP", "17RcV9eM6s9ArfufdOWGyA0cxu70XNxny", "1V87CanX6rQatlId3lWOIV9TMEVGU9jAe", "1KivfKD1FnF51jLShqtcG-d8xe61YAVS4", "1E0nD-YiUeCHLzHl-u9rGrIrhDG3gImus", "1aoe0YjM9Yoorq911Sq6ClK_DQC940_xV", "1COHp9ubuJVWrHzF5gEshSj6pKxk7unpm", "119VBBx9-z3aBi9sXgzD2BK3k35-auFnx", "1ptfiN3O2e_tuwGRNMCjh9mDKLbm2Wxq7", "1CBcgvYKQvb-zt-xgpIYwM1Tsm3Xw0dLq", "1hWg5_CKnTk5zWMzQdOPd5eVQfM8mIQHS", "1nX55j0TfpK8VP_pK4l9uEiNTATPUOn48", "1nf-bjGRzCN8lLsyjm5QCL5xofqxF9R0A", "1Tt7gbeOdnoWjbwGGWDVqOSapE-pja2S8", "17mgLPZSNsSKvhtV7YODf4_IfDL4CHAKK", "1Pi7RrBFyVjs3V9l3Q34ShK6tQJ769Rr2", "111cNgPEzCCENJ7d-5N1sHNgFdSpw7UFM", "1qeDDdmT3y5b7nuE-c2Wt43bzd4Kcmmzi", "1QX_peetfCTIkFAyH4pxQoC3id9wWJ3L9", "15OZ16TFc0KzFCU5fPw7ynG9iVb1dOAeZ", "1Bsgg1eMFOtmyzg5dMxGGebFrwjNLhuUD", "1hVESfToIla1y2ePGy2yE7Bf2SnilGuKG", "1tUTcRX48s6HGcJEKLPJClOI2S74WjFwD", "1njuB9A7za3Qe4BZaJ8uJkUlK9sRWGcsq", "1caTH8MqHfpS7kJtKzbuwF9Sw9eXRRwSu", "11scaxktVpaOKLFcVYX6OGoWx0uS84mI3", "1gmUW7sXIU8ipcG4Zb03L2NMPQGl1T5CK", "1jZNKz_3Co7a8VKOKP_L4JC7ObcfTX1Ti", "1248Fy1SkqiJXW3D2X4pynv5PCLW7WfHv", "1ywJEJlQhTEcB_YpPUA-oWUEvXtDfEcqt", "1urOgYQhR05t46PZcuRwYzT84kWsGklQt", "1Tl1Z0TvudagRtuwg1SJc9Lj5wdlkwW8b", "1NLGVTILBBSr5qKIy74MX2Hc4r_5Sw6SY", "1xk6R1XljvPxHi7wIoKId9x2K-zddQnqj", "1lNj1BdjhBgJHF8vAxhS2Fij50ts5HHx1", "16LcGkEfs2BsXbkZiI6tznKSb0h-GgrIu", "1UxaXvpRPgAksbvFK0A4iH2MMa8VxEzPy", "1lk1gb4yJKE6TxzEQz_47ZuSSxcB7iwxT", "1ChZqKlOrmnDSHs_yoO_Z75idlbYChSMx", "12vjEcTnXV6qXqWI7-FRlRwJO7TQNVtU_", "1OhiFP1_WtVUQLuxfNjsZNSeYaboOKU8R", "1Nk9fg1hF8yrUF0MmxX5_WoPMBpo04OK8", "16O1TU9-vr75spJ5XDxmGFED_ZFhJ8w44", "1soNArCO_cnobRSIDFDuMU_4zuWmnOiBH", "15fpTgmh81lrgp7JVL39ulKFVJFHY3YeR", "1q7sjKr1Urz2SEk1eqjtL-GyOd0CYhIBU", "1mHQugHbIrd7AD9EIbLLIwZx_X021iFTa", "1DRQsKF5h7r-NdroDtnQqxOF0LnCWmgJZ", "1IX-ZygYFRUNWi49MOrlifKFRsrJyk-Oc", "1pUnY1rlQIAUWeyojyv5ff5Gn3f4WJezh", "1-RKJhE6mU2LZoZDFagxKQWTLoXgJV0n-", "1ixqouSbxGVB5T_QoRI4K5VM-KkX09bTF", "1X9nHezv1j4QedSf1cKYCMtYAUmxQMX6Z", "1cJ8e_muq5zYf7z6gKyMIpFuze2ZFDu_E", "15-BKdVcsWccwgTE2MgyMkaiH54ftd4lT", "1IrHFD-B5IbWl203Oe1I7MsEdpHSY6Xmk", "101tXEG43iIkHzaNg-JHETcCy9HF3avIA", "1tF3iXc6JL94sFtle5-M384jvPnITyCbD", "1bFLL1yliadXuIn7yQGsBILS2ih2Brwto", "1ijRcfFaoMr1M8NVezWIDNHkAXSee7Or-", "112e2cDmo4fV5rZCkAtKJ93anE2YbzYMT", "1AQvTjpTaB7jM9aEeJcd29rcDVbSefcjd", "1JFpi1XSDnJnCbayaIuG5PcJSGYV-RPV0", "1o1ieMz1MxdUz60LFfKeuTa8NF6YF7qlQ", "1x2AFvccY9jmzxrf-KVX4Kor1FrvPzxNQ", "1CKvVde1kqGCGhC282Gj3pY6UJDtDQrLr", "1Lq9rYG_pfrtxgSTayeh1JPgJ3Wn28u2h", "1T1O0yEL52v_0J-TKep2SRzzaaJ-yEZjC", "1YaKd0jq0Ig02OTldmKODQiM01TAM_FS7", "1NuhG16TYBhs6kzf81vKJk5xyqRzRmG_0", "1TLKAdAyjFEL0h7yKrtv9J_-Y3PZW0v_s", "1QX7sMPa5YJ8yMTLRstmMPs_5eG7tWXsg", "1dxmuZFylG9SfKwSgc7MiC_KnsWbNFHVI", "103kMxTpLzPiDMcIjYmVItsqjtot93F6S", "1LR88DjmmN8xYbp6Z54-d0DJibDHP2g9X", "12SD-Cx-MkZA359z244owiagoRkuXXhAP", "1AIbe1rVDxNDclMEZJvpAPgRyS6cA8Wc2", "1NOBge4chP4gZPXQZTohsSSC4a1V3cGEl", "1kcL7to4zxsy2ixKngHJ_8qoGL1NV2HCx", "143dmWIX0-YiTm0jdaAibm6xMZxHW9j9D", "1PtFNRXcErPDHOE9Im5FJXJFUbZyXQ1pp", "1mCdTuet1twOCKlY-X3f1bkn7wCxeAOZE", "1J0PoRTGa9WCniC2JnpXkAJd-1tEDFfuh", "1B5fz9NQi2LqGr7CdYbVGwEnzB-sRDlS2", "1T_oVMNxIPHwqw5AnzsH_f76z5K5MODd0", "1L3UAKCJKkNyFwramjksa6Rd2warABxdg", "12RvopUvHVl2qP8Kz8PqedLOGAfjs_KYC", "1FdGuQtcAVATe91vmPR0vKtGY0VH6rilp", "1ZLEgC7dvCmkSOMrd8qd9UJAWaK2Q3Rw1", "1FuyFXGoPx7hq9o0kei7NypTfEkgL1Des", "1FGb_nUW1_TRYGpgZW8OYdmuZIHSRNF08", "1Am6TAmizA6Cy9eJHShHD5FiE7ZlR5hyA", "10L4s6T3cwLSFOPqRYmnn3G0wswieoAtv", "1ezMD97nbnnDcRmbrbcbXbqyPf_vVnGYI", "1gIyPjJ3XYM7nP5jX0z3cZv8GXguAfYQ9", "1XTWmcOQ73_K6-KZ6RQx9EeaehvPE19cC", "1xjQlR0NJ8zpHn5ksM3xUifvIzs13fvyU", "1FJR9tq_fTnUd732rHBQhVNKXm3ZDeCpy", "11dGdJsPSZ786bjFrwsTZ2I3SZTNHabP-", "10S92ousZ4njOTCbqbKNlRy53W2CcgI7h", "1Tf8vaVAft8TfWcJNwb14lt7cldUMaduq", "1bxt7Ln2aY-nsVWqbD3i9VlaRc49ls9Kb", "1Viy8R24a0giJ4kLew8z8S0GCfWsC698y", "1RnVND3PraHCrr-zt75E0hqSzDNa4jJPn", "1LjsYMcIdogjGxV49dps3wbbjniO-XuS7", "1PcibdLClzWIaqkZVgcXCy4qDs1HzcVFz", "1FmwyuC766-BOGzRv24qHWTOxgr-I1ikM", "1-P4N95twp1BQcyzp3Gp834gXg7O9jFVX", "1RstKOhzr2MlkjvWNiAl9yeSb0TShfhHo", "1b1zEoDu9bD7cJFZv5YpwIeEg2cCHVB_H", "189NP_EDyj3_oXo5CyWtGJT3QNbQaa5Cq", "1ig-Fap8wiECkmIaPsllvKcuDAPcDmHsc", "1kGZeWhTawf4GkKkzN-NrlyV43VBvMgX-", "1ZTyoZn_6XEkxeTUkcBvzRNRd3XizqY3w", "1rGtY8n1vbSqoEuGT0IXtwH0Hd8HKV1lc", "1PTcH8Ky5Q4Nj4x7jo6RUztWzqhKrO23p", "1u4aE4VhW2cRuCzIQ9qptAlSz26W85QAk", "12tiyl59gATfcia64griNMaYCjwkteA4j", "1J5Znicf0pbWoECGbUnaPR7Ybia5aYTBU", "1Df_IXqyLrFNxtBIc5rzDCkFgNdbk-v--", "1bkFTU_NlL8fZN2jKrwuUQ1drL_Z_j6Qi", "1mNxON56cq_dcRABhw316j3xTR5ICRgjq", "1A0-dQSyT8xc_rB42_Zo-htTkNXWsaVwz", "1_42E0EuLl4NLR8iEWS4dj7ej9n4jgNej", "1qu1rsWXxx44RSxT-_dBIuehjfUTezI9-", "1P54HnJ43jqjXe-LcrqluI_-s_1lyJIRe", "1sd0GTQo47_9U3GVWqu7duLrJmElbfXgS", "1m2M9G0va-uoMntk3082Aj4hDGHmrp1a1", "1rBFm66IF6WqHV-27ZtVTXvbks9Iaaev-", "1Kc-xva9wnO5uwM7iC1JR8o_xzvUU9iYC", "1bSFi7GWWUVVX4pKzhQ0HqAclEE6x0Oou", "1rVQ13z3V2sW2uQSmGR_8MpxpZasN9S3s", "1boMSoSS4XmpWPgMXPsDahEmpMKMHdhHo", "1sDN6VgAh5LHmoSeWoKiFVRYU1hG0a_yr", "1nJOwoZn5Zh5Orw-GDn4TwyxgUmIbbLQF", "1Yp5F7FZFZRj6X9X5BBF_fqxT3GtIvL0Z", "18mtM6LnRO2mVT97EBwXsL3uSTI9uxefU", "138W-DShkENvTFc8jWAfpTghCqfC8LNau", "1vqGqWDx1jA85tfk8XITPhf6oiLBqhCsV", "1fPFikQsdM0FLZtDsPgKJ8BoLGjuWG4tw", "1bAsIKWul-_QRZ9_5o1d6IQWEt_SjmlGm", "1fRVMYQuGG07dfX_O2LI_GqcS7kmvUlBG", "1hqXgfscSgXUefSbGKyySB18Hq-HWm_zM", "1RHH4TPLSgGQ7I0VN9OX1jFjTp_-uK71m", "1EYCPP872lR0DuP-XDwbsxOLemG0GqtE9", "1yRFX13uV_nV4Iti0k3A2G2EbyC573CUC", "1D0Y_E-P3EP8FCp3ubL8aAu19a-CJ08Bc", "1Tyc3JLbqaw6-ll5SCpvEg9kQREAH1moA", "1-LxLV8C5p2ookaa0T6Tk8AtZjZh-3PlP", "1UxGDGUdmYmlkUJZuSK8SWDKOxvqIkGpI", "1oVla5mRbRtLCjnNKcr7B8e47ut-wNKZU", "1AFdJ6KFc9hzrc8ndCtgRRxyKkvj6tF6I", "1XaLDjJgB1wQzkChuH7p3SCMV5dTmGwZI", "1v5gRXGe4COCf_pD4CFCpq6HP21w-LOfc", "1HWolg-JSnB4Scd10ve9oIbycNevc9ohC", "1BZqeGpRAKOBQxkTgfgYZU2rNCDDJgoIu", "1CcSdqB21IwTemH4V6S7fAkREyi5yas1s", "1JAS4ZVveQD3kEn2C4xABsJw88q1WnRk-", "16r_6Vm931Y3zxxPBWFgDOtkFGVpnsSAj", "1cFQwd0_V3A5hXxyZrUlb-ackiFGd0F4R", "18ORC_qVxvK6HeiZF2DiBlUoduJM0Ofrw", "1U-J46x3qmpbPxrOeUgRONrqmWxWihm8C", "1Pr7AOxCr53qgGXxxhK-byw1Zet_S9wOH", "17dseJHGpjW-plsYhYQ5o9Ep2_oEnSvC1", "15c3fuoK7e4_--cEAI6ggtX54EXaRx9GC", "1HiLYFHEw3lGQeIIHb2_YMO5gy-ENFyU2", "19Zpcn5wVqBNZACzbIv1nTnZ4P8njl30V", "1qZTmzAPpfL_tZX-tAy2WoQhdl5l8hcG0", "1m7ZsJkHH5L48xdrPuprJr-F3TUGTlvgD", "11Ekjw9NQWrZo6UOrLbdXnvbMHtp0JEg6", "1yqFf4ydV77OZ7fjCjf6ekzEF8a6RgHhE", "1bejrUH3KWVf-n_6K5p-ebYy2wA95JE_o", "1cW7KdP5zp_GfdlHNxCtFvNbXCVP5PPP-", "1-1cXJWxJRo46zFLS3PgJYJJCgdHrdgqq", "1N4G5jcCM0S5EdHF5kySuEFibEQaRrmce", "1K-szrtKidhyaU-6uKdkpbijDnWPU5o3A", "1GNKXZjazK60kNW3IMWVx_k0h8En2zlFI", "10DjHOpQdGgvB083Q9GNVW5fkKvJavnLl", "1SLW3afSJUZMiUrSzCiW-4BvOY7GrIJMG", "1a-Hy_v0HPfqcrrTgiDDMv4WvGzN0LQ46", "1dy8s41f5w1gvcDlQYDwWQeTYLGWKnFRf", "12CMVgbya9f0yzl2Ayi1svsfTr3IXVXHX", "1PUCuU1u-Z_CLeZXdWUshLMQqg3UGv72v", "1Z4sFPOiRiH7aB1Nfxzz1QxqGAxEmj2yq", "15yF4q-bSew81K8YvtA_kjBeEjat9ZNMW", "1zisXGvqlL_-z_hm0BzrWVyqCmlcENZBs", "1qW0IuqsbzJdxXgEnRjpeCXoXJbW0BqvO", "1ry33q_GIDWetQ40Ixur4Rga1bS4oKdf-", "1Xf6ETVTdjw2T-XsVLJnIhtMW4bITAaba", "1vrVy_0drEmXqq47lmD1BmKvtvvcJ_zKy", "1U99y3kE-0J31V_SfC_EA0TFZIAFXG4pq", "1xsXAWUULGxo2sVGh40ltKbXrT0Nw0P-Y", "1aF0tyhoL6vwD20BrL06gPLbUadS0Oy9W", "1QrLJxxtL8tFMuQBvKEVp9idl6tQWCcX_", "1h1r6vH5x7dTdFHxGMWSlmiyCLip_F4Vf", "16dF_e09SGuWqk-9rcdtPr25HZOIcuwSP", "1RP1foqeu3RlCrsN_iPnP13YsKD3HWkJv", "1txS8wE4QDKLJOQui4ABTiumyTk8KhhGi", "1JBgVdjbiVeJwDhNbVqkozflISloAKQp4", "1ojTWWV7PXD0WoNe3yUxq9OYdi4xmgJmi", "19lsx0LXU6VMWCjg5hnJIKFaZ6GJ5bgCw", "1eWEIhUTenMU6z149gV_HgxGBI5KacV6S", "1zz7rp7tpKj30eOo_B4INmiuNj9GPwxnB", "1Q2Qww2YHNkYOP48bMcmZFuiv2GZsFxH4", "1dmaMVflfycyvJ2CpwlRp18W0Wnd0s1_k", "1WuNcOXslx-RbXR-g7QJkBh6Rm9sqQrIH", "1mRL6HjdT-s3uvD1YXpFBtHRA-ew0qr4S", "1nDs0urPo2vJ1Bygzq857GjFEW5Y_UtMV", "1k2FxTMvdHz6_Qk9xRgzgaXkRamxzc1Xr", "1dEObJsYfDtFpY-K4c-b7-zr92253vw6x", "1XlrWXL8ClfDYnKsZ-DkIHzEtOkuws9dq", "10XtfX_8H_lwvLatYzGJSzjA1Kulc-PE9", "1e3AGCIYxssKqRXj2CV3WXPTvKBBPWIMm", "1ztCAW__HXAaph2_KyiozO6hxFTwl4COO", "1Rwj75Ndt2FC5P4SDTaHuwq5iRbqrjST2", "1WoinwfbjOI-Fv1s5acpfYbXKxYU78Ot5", "1-clLxvX8Hw1B10ZFHPh7rLNNGLd0TSZ4", "1EbjC48dh4sGLMzMh9gIZQ3wvtaigIXJy", "1rmS9j-VyC5zZLIPp0ZcbQ0Lrmsn_sJMe", "1YyeGdVZDz8CqqQWR-Ms9A_UOPEWQF7v7", "1nC5HykEpCd_rJBGyAYsgaPdrVnCYYPwS", "1dFgEa45XiYh2ELlbxCGCI9d5FoxYZRZc", "15NiK9nghdEsSH7XAt6VhfkJTQzYDGzTh", "14LlJIt1L3bP1Rg_IJXTbPVOXVmB1vloz", "18xq1UCIzNXXfWbUVfFtVzPpGQhbaCcav", "17yXbyrzGx67cfzEq7xWZoRpKtY_plHcQ", "1rBq_1Q-GHmiGjc7vlQw0C_lSbwuMWpc5", "1KNxFrc34zWc-Y2kGWeUGaKRxhLWR4yFO", "1UYOYVsVb2Onx-u1jdJ_egP44bCbuq_Fy", "1ZKJHmCttl-IrSgx0J2gxynszUI6KREFO", "10SbdWql3gptbqCwG6rfSnz2Ms1KmNAzc", "1NKqKYIrrdA8_RvNl41vPngO2f9CxFw20", "170TbsKSOO_dQV8hQeCTvCixUNBq9dX0_"];
+    let currentLbIndex = 0;
+    let useIframeMode = false;
+    let loadedGridCount = 0;
+    const batchSize = 24;
+
+    function getImgUrl(id, size) {
+      return 'https://lh3.googleusercontent.com/d/' + id + '=s' + (size || 320);
+    }
+
+    function getIframeUrl(id) {
+      return 'https://drive.google.com/file/d/' + id + '/preview';
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const isActive = drawer.classList.contains('active');
+      if (isActive) {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      } else {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Populate Hero Grid
+    function renderHeroGrid() {
+      const container = document.getElementById('heroGrid');
+      if (imageIds.length === 0) return;
+
+      const heroIds = imageIds.slice(0, 3);
+      let html = '';
+
+      // Big photo (index 0)
+      if (heroIds[0]) {
+        html += `<div class="grid-item big-photo" onclick="openLightbox(0)">
+        <img src="${getImgUrl(heroIds[0], 860)}" alt="Memory 1" loading="eager" onerror="this.src='${getIframeUrl(heroIds[0])}'">
+      </div>`;
+      }
+
+      // Small photos 1 and 2 (indices 1 & 2)
+      if (heroIds[1]) {
+        html += `<div class="grid-item small-photo" onclick="openLightbox(1)">
+        <img src="${getImgUrl(heroIds[1], 550)}" alt="Memory 2" loading="eager" onerror="this.src='${getIframeUrl(heroIds[1])}'">
+      </div>`;
+      }
+      if (heroIds[2]) {
+        html += `<div class="grid-item small-photo" onclick="openLightbox(2)">
+        <img src="${getImgUrl(heroIds[2], 550)}" alt="Memory 3" loading="eager" onerror="this.src='${getIframeUrl(heroIds[2])}'">
+      </div>`;
+      }
+
+      // Row two (indices 3 & 4)
+      if (heroIds[3] || heroIds[4]) {
+        html += '<div class="row-two">';
+        if (heroIds[3]) {
+          html += `<div class="grid-item" onclick="openLightbox(3)">
+          <img src="${getImgUrl(heroIds[3], 480)}" alt="Memory 4" loading="eager">
+        </div>`;
+        }
+        if (heroIds[4]) {
+          html += `<div class="grid-item" onclick="openLightbox(4)">
+          <img src="${getImgUrl(heroIds[4], 480)}" alt="Memory 5" loading="eager">
+        </div>`;
+        }
+        html += '</div>';
+      }
+
+      // Row three (index 5)
+      if (heroIds[5]) {
+        html += `<div class="row-three">
+        <div class="grid-item" onclick="openLightbox(5)">
+          <img src="${getImgUrl(heroIds[5], 600)}" alt="Memory 6" loading="eager">
+        </div>
+      </div>`;
+      }
+
+      container.innerHTML = html;
+      loadedGridCount = 6;
+    }
+
+    // Infinite Loader for More Photos
+    function loadMorePhotos() {
+      const grid = document.getElementById('morePhotosGrid');
+      const end = Math.min(loadedGridCount + batchSize, imageIds.length);
+
+      for (let i = loadedGridCount; i < end; i++) {
+        const id = imageIds[i];
+        const item = document.createElement('div');
+        item.className = 'grid-item';
+        item.onclick = () => openLightbox(i);
+
+        const img = document.createElement('img');
+        img.src = getImgUrl(id, 320);
+        img.alt = 'Memory ' + (i + 1);
+        img.loading = 'lazy';
+        img.onerror = function () {
+          this.src = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w400';
+        };
+
+        item.appendChild(img);
+        grid.appendChild(item);
+      }
+
+      loadedGridCount = end;
+
+      const sentinel = document.getElementById('loadingSentinel');
+      if (loadedGridCount >= imageIds.length) {
+        sentinel.style.display = 'none';
+      }
+    }
+
+    // Intersection Observer for scroll loading
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && loadedGridCount < imageIds.length) {
+        loadMorePhotos();
+      }
+    }, { rootMargin: '200px' });
+
+    // Lightbox functions
+    function openLightbox(index) {
+      currentLbIndex = index;
+      updateLightbox();
+      document.getElementById('lightboxModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.getElementById('lbIframe').src = '';
+    }
+
+    function navigateLb(direction) {
+      currentLbIndex = (currentLbIndex + direction + imageIds.length) % imageIds.length;
+      updateLightbox();
+    }
+
+    function toggleLbMode() {
+      useIframeMode = !useIframeMode;
+      const btn = document.getElementById('lbModeToggle');
+      btn.textContent = useIframeMode ? 'Switch to Image' : 'Switch to Iframe';
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      const id = imageIds[currentLbIndex];
+      document.getElementById('lbCounter').textContent = `Photo ${currentLbIndex + 1} of ${imageIds.length}`;
+
+      const imgEl = document.getElementById('lbImg');
+      const iframeEl = document.getElementById('lbIframe');
+
+      if (useIframeMode) {
+        imgEl.style.display = 'none';
+        iframeEl.style.display = 'block';
+        iframeEl.src = getIframeUrl(id);
+      } else {
+        iframeEl.style.display = 'none';
+        imgEl.style.display = 'block';
+        imgEl.src = getImgUrl(id, 1200);
+      }
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightboxModal');
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') navigateLb(-1);
+      if (e.key === 'ArrowRight') navigateLb(1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Init
+    renderHeroGrid();
+    loadMorePhotos();
+    observer.observe(document.getElementById('loadingSentinel'));
+  </script>
+
+</body>
+
+</html>
